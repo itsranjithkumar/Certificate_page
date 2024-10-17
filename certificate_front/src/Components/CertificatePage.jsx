@@ -58,10 +58,10 @@ const CertificatePage = () => {
           >
             <option value="">Select Course</option>
             <option value="FULL STACK DEVELOPER (Course Complete)">
-              FULL STACK DEVELOPER (Course Complete)
+              FULL STACK DEVELOPER (Course Completed)
             </option>
             <option value="FULL STACK DEVELOPER (Internship complete)">
-              FULL STACK DEVELOPER (Internship complete)
+              FULL STACK DEVELOPER (Internship completed)
             </option>
             <option value="MCQ Test Certificate">MCQ Test Certificate</option>
             <option value="Python Certificate">Python Certificate</option>
