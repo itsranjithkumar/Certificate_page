@@ -1,0 +1,15 @@
+[
+    {
+      "id": "1",
+      "courseName": "Python Programming",
+      "instituteName": "Your Institute",
+      "description": "Python course with problem-solving exercises."
+    },
+    {
+      "id": "2",
+      "courseName": "Full Stack Development",
+      "instituteName": "Your Institute",
+      "description": "Full stack development course with internship."
+    }
+  ]
+  
