@@ -27,7 +27,7 @@ const GeneratedCertificate = () => {
 
         {state.selectedCertificate === 'certificate2' && (
           <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-black">
-            <h1 className="text-3xl font-bold mb-4" style={{ fontFamily: "Pacifico, cursive" }}>Indian Institute of Technology Madras</h1>
+            <h1 className="text-4xl font-bold mb-2 text-red-500" style={{ fontFamily: "Pacifico, cursive" }}>Indian Institute of Technology Madras</h1>
             <p className="text-lg italic mb-2" style={{ fontFamily: "serif" }}>hereby confers the degree of</p>
             <h2 className="text-2xl mb-4" style={{ fontFamily: "serif" }}>Bachelor of Science (B.S.)</h2>
             <p className="text-lg mb-2" style={{ fontFamily: "serif" }}>in</p>
