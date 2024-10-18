@@ -5,6 +5,7 @@ import GeneratedCertificate from './Components/GeneratedCertificate';
 import './App.css';
 import './index.css';
 
+
 function App() {
   return (
     <Router>

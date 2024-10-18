@@ -1,107 +1,90 @@
-// src/Components/CertificatePage.jsx
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CertificatePage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    course: '',
-    issueDate: '',
-    certificateId: ''
-  });
-
+  const [name, setName] = useState("");
+  const [issueDate, setIssueDate] = useState("");
+  const [certificateId, setCertificateId] = useState(""); // Added certificate ID
+  const [selectedCertificate, setSelectedCertificate] = useState("");
+  
   const navigate = useNavigate();
 
-  // Handle changes in the input fields
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
+  const generateCertificate = () => {
+    const certificateData = {
+      name,
+      issueDate,
+      certificateId,
+      selectedCertificate,
+      course: "Programming and Data Science"
+    };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Navigate to the GeneratedCertificate page and pass formData as state
-    navigate('/generated-certificate', { state: formData });
+    navigate("/generate-certificate", { state: certificateData }); // Navigate to GeneratedCertificate page
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300">
-      <h1 className="text-4xl font-bold mb-8">Generate Certificate</h1>
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+    <div className="flex flex-col items-center py-10">
+      <h1 className="text-3xl font-bold mb-6">Generate Your Certificate</h1>
+
+      {/* Form to collect details */}
+      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Name
+          </label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="border rounded-md w-full p-2"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
-        {/* Course Selection Dropdown */}
         <div className="mb-4">
-          <label htmlFor="course" className="block text-sm font-medium text-gray-700 mb-2">Select Course</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Issue Date
+          </label>
+          <input
+            type="date"
+            value={issueDate}
+            onChange={(e) => setIssueDate(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Certificate ID
+          </label>
+          <input
+            type="text"
+            value={certificateId}
+            onChange={(e) => setCertificateId(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Select Certificate
+          </label>
           <select
-            id="course"
-            name="course"
-            value={formData.course}
-            onChange={handleChange}
-            required
-            className="border rounded-md w-full p-2"
+            onChange={(e) => setSelectedCertificate(e.target.value)}
+            className="block w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           >
-            <option value="">Select Course</option>
-            <option value="FULL STACK DEVELOPER (Course Complete)">
-              FULL STACK DEVELOPER (Course Completed)
-            </option>
-            <option value="FULL STACK DEVELOPER (Internship complete)">
-              FULL STACK DEVELOPER (Internship completed)
-            </option>
-            <option value="MCQ Test Certificate">MCQ Test Certificate</option>
-            <option value="Python Certificate">Python Certificate</option>
-            <option value="SQL Certificate">SQL Certificate</option>
+            <option value="">Select</option>
+            <option value="certificate1">Certificate 1</option>
+            <option value="certificate2">Certificate 2</option>
           </select>
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="issueDate" className="block text-sm font-medium text-gray-700 mb-2">Issue Date</label>
-          <input
-            type="date"
-            id="issueDate"
-            name="issueDate"
-            value={formData.issueDate}
-            onChange={handleChange}
-            required
-            className="border rounded-md w-full p-2"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="certificateId" className="block text-sm font-medium text-gray-700 mb-2">Certificate ID</label>
-          <input
-            type="text"
-            id="certificateId"
-            name="certificateId"
-            value={formData.certificateId}
-            onChange={handleChange}
-            required
-            className="border rounded-md w-full p-2"
-          />
-        </div>
-
         <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200"
+          type="button"
+          onClick={generateCertificate}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           Generate Certificate
         </button>
-      </form>
+      </div>
     </div>
   );
 };
