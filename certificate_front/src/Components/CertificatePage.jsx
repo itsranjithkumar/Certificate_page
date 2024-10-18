@@ -5,7 +5,7 @@ const CertificatePage = () => {
   const [name, setName] = useState("");
   const [issueDate, setIssueDate] = useState("");
   const [certificateId, setCertificateId] = useState(""); // Added certificate ID
-  const [selectedCertificate, setSelectedCertificate] = useState("");
+  const [selectedCourse, setSelectedCourse] = useState(""); // Renamed to selectedCourse
   
   const navigate = useNavigate();
 
@@ -14,8 +14,7 @@ const CertificatePage = () => {
       name,
       issueDate,
       certificateId,
-      selectedCertificate,
-      course: "Programming and Data Science"
+      course: selectedCourse // Use selectedCourse for course data
     };
 
     navigate("/generate-certificate", { state: certificateData }); // Navigate to GeneratedCertificate page
@@ -65,15 +64,16 @@ const CertificatePage = () => {
 
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Select Certificate
+            Select Course
           </label>
           <select
-            onChange={(e) => setSelectedCertificate(e.target.value)}
+            value={selectedCourse} // Set value to selectedCourse
+            onChange={(e) => setSelectedCourse(e.target.value)} // Update state on selection
             className="block w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           >
             <option value="">Select</option>
-            <option value="certificate1">Certificate 1</option>
-            <option value="certificate2">Certificate 2</option>
+            <option value="FULL STACK DEVELOPER (Course Completed)">FULL STACK DEVELOPER (Course Completed)</option>
+            <option value="FULL STACK DEVELOPER (Internship Completed)">FULL STACK DEVELOPER (Internship Completed)</option>
           </select>
         </div>
 
