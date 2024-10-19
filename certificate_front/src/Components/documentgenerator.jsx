@@ -1,15 +1,12 @@
-'use client';
-
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import html2pdf from 'html2pdf.js';
 
 export default function DocumentGenerator() {
-  const [document, setDocument] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     startDate: '',
@@ -17,6 +14,8 @@ export default function DocumentGenerator() {
     projectName: '',
     content: ''
   });
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,52 +25,37 @@ export default function DocumentGenerator() {
   const generateDocument = (e) => {
     e.preventDefault();
     const letterText = `
-      <div id="letter-content" class="bg-white p-8 rounded-lg shadow-lg max-w-2xl mx-auto my-8 border border-gray-300">
-        <div class="mb-8 text-center">
-          <img src="/logo.png" alt="Logo" class="mx-auto mb-4" style="max-width: 100px; height: auto;" />
-          <p class="text-lg font-semibold">Automation Internship Program</p>
-          <p>123 Tech Street, Silicon Valley, CA 94000</p>
-        </div>
-        <p class="mb-4">Date: <strong>${new Date().toLocaleDateString()}</strong></p>
-        <p class="mb-4">Dear <strong>${formData.name}</strong>,</p>
-        <p class="mb-4">
-          This letter is to confirm that you have successfully completed the Automation Internship Program
-          at our organization from <strong>${formData.startDate}</strong> to <strong>${formData.endDate}</strong>.
-        </p>
-        <p class="mb-4">
-          During your internship, you worked on the project "<strong>${formData.projectName}</strong>" and demonstrated
-          exceptional skills in automation and software development.
-        </p>
-        <p class="mb-4" style="white-space: pre-wrap; word-wrap: break-word;">${formData.content}</p>
-        <p class="mb-4">
-          We appreciate your hard work and dedication during the internship period and wish you all the best
-          in your future endeavors.
-        </p>
-        <p class="mb-8">Sincerely,</p>
-        <div>
-          <p class="font-semibold"><strong>Vijay.P</strong></p>
-          <p>CEO, MagizhTech</p>
-        </div>
+      <p>Date: <strong>${new Date().toLocaleDateString()}</strong></p>
+      <p>Dear <strong>${formData.name}</strong>,</p>
+      <p>This letter is to confirm that you have successfully completed the Magizh Technologies
+      at our organization from <strong>${formData.startDate}</strong> to <strong>${formData.endDate}</strong>.</p>
+      <p>During your internship, you worked on the project "<strong>${formData.projectName}</strong>" and demonstrated
+      exceptional skills in automation and software development.</p>
+      <p style="white-space: pre-wrap; word-wrap: break-word;">${formData.content}</p>
+      <p>We appreciate your hard work and dedication during the internship period and wish you all the best
+      in your future endeavors.</p>
+      <p>Sincerely,</p>
+      <div class="flex flex-col items-center">
+        <p class="font-semibold text-center"><strong>Vijay.P</strong></p>
+        <p>CEO, MagizhTech</p>
+        <img src="/msme.png" alt="Logo" class="my-2" style="max-width: 100px; height: auto;" />
       </div>
     `;
-    setDocument(letterText);
+    
+    // Navigate to the new page with the letter content
+    navigate('/generated-letter', { state: { letterText } }); 
   };
 
   const handleDownload = () => {
-    const element = document.getElementById('letter-content');
-    if (element) {
-      const opt = {
-        margin:       0.5,
-        filename:     'Internship_Letter.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-      };
-
-      html2pdf().from(element).set(opt).save();
-    } else {
-      console.error("Letter content not found!");
-    }
+    // Logic for downloading the letter text as a file can be added here
+    const letterBlob = new Blob([letterText], { type: 'text/html' });
+    const url = URL.createObjectURL(letterBlob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'internship_letter.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   return (
@@ -113,18 +97,7 @@ export default function DocumentGenerator() {
           </form>
         </CardContent>
       </Card>
-
-      {document && (
-        <div className="mt-8">
-          <div id="letter-content" dangerouslySetInnerHTML={{ __html: document }} />
-          <button
-            onClick={handleDownload}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mt-4"
-          >
-            Download Certificate
-          </button>
-        </div>
-      )}
+      {/* Download Button - outside of the letter page */}
     </div>
   );
 }
