@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CertificatePage from './Components/CertificatePage';
-import GeneratedCertificate from './Components/GeneratedCertificate'; // Assuming this is for the generated certificates
-import InternshipCertificate from './Components/InternshipCertificate'; // Import your new InternshipCertificate component
+import GeneratedCertificate from './Components/GeneratedCertificate';
+import DocumentGenerator from './Components/documentgenerator'; // Correctly import the file
 import './App.css';
 import './index.css';
 
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<CertificatePage />} />
         <Route path="/:name-certificate" element={<GeneratedCertificate />} />
-        <Route path="/internship-certificate" element={<InternshipCertificate />} /> {/* Add the route */}
+        <Route path="/document-generator" element={<DocumentGenerator />} /> {/* Add the route */}
       </Routes>
     </Router>
   );
