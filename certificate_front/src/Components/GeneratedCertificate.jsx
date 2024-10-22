@@ -7,6 +7,7 @@ const GeneratedCertificate = () => {
   const { state } = useLocation();
   const certificateRef = useRef();
 
+
   const handleDownload = () => {
     const doc = new jsPDF();
     if (certificateRef.current) {

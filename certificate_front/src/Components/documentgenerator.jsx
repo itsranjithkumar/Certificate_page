@@ -73,10 +73,12 @@ export default function DocumentGenerator() {
             text-align: left; /* Align signature to the left */
             font-weight: bold;
           }
+          .logo-container {
+            text-align: center;
+          }
           .logo-container img {
             max-width: 100px;
             height: auto;
-            text-align: right; /* Align logo to the right */
           }
           .contact-info {
             margin-top: 30px; /* Space above contact info */
@@ -98,6 +100,9 @@ export default function DocumentGenerator() {
           }
           .address-space {
             margin-bottom: 10px; /* Space below address before the link */
+          }
+          .logo-move-left { /* New class for logo adjustment */
+            margin-left: -10px; /* Adjust the value as needed */
           }
         </style>
       </head>
@@ -126,16 +131,18 @@ export default function DocumentGenerator() {
                 <p>Vijay.P</p>
                 <p>CEO, MagizhTech</p>
               </div>
+              <div class="logo-container logo-move-left"> 
+                <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
+              </div>
               <div class="logo-container">
-                <img src="/msme.png" alt="Logo" />
+                <img src="/msme.png" alt="MSME Logo" />
               </div>
             </div>
           </div>
           <div class="contact-info">
             <div class="contact-left">
               <p>
-                28, 1st Floor, JK Complex,<br />
-                
+                <br />
                 North Rangasamudram, Sathyamangalam-638401<br />
               </p>
               <p class="address-space">www.magizhtechnologies.com</p>
