@@ -136,7 +136,7 @@ export default function DocumentGenerator() {
               <p>
                 28, 1st Floor, JK Complex,<br />
                 
-                North Rangasamudram, Sathyamangalam-638401
+                North Rangasamudram, Sathyamangalam-638401<br />
               </p>
               <p class="address-space">www.magizhtechnologies.com</p>
             </div>
