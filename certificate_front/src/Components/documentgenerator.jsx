@@ -24,38 +24,127 @@ export default function DocumentGenerator() {
 
   const generateDocument = (e) => {
     e.preventDefault();
-    const letterText = `
-      <p>Date: <strong>${new Date().toLocaleDateString()}</strong></p>
-      <p>Dear <strong>${formData.name}</strong>,</p>
-      <p>This letter is to confirm that you have successfully completed the Magizh Technologies
-      at our organization from <strong>${formData.startDate}</strong> to <strong>${formData.endDate}</strong>.</p>
-      <p>During your internship, you worked on the project "<strong>${formData.projectName}</strong>" and demonstrated
-      exceptional skills in automation and software development.</p>
-      <p style="white-space: pre-wrap; word-wrap: break-word;">${formData.content}</p>
-      <p>We appreciate your hard work and dedication during the internship period and wish you all the best
-      in your future endeavors.</p>
-      <p>Sincerely,</p>
-      <div class="flex flex-col items-center">
-        <p class="font-semibold text-center"><strong>Vijay.P</strong></p>
-        <p>CEO, MagizhTech</p>
-        <img src="/msme.png" alt="Logo" class="my-2" style="max-width: 100px; height: auto;" />
-      </div>
-    `;
-    
-    // Navigate to the new page with the letter content
-    navigate('/generated-letter', { state: { letterText } }); 
-  };
 
-  const handleDownload = () => {
-    // Logic for downloading the letter text as a file can be added here
-    const letterBlob = new Blob([letterText], { type: 'text/html' });
-    const url = URL.createObjectURL(letterBlob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'internship_letter.html';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    const letterText = `
+      <html>
+      <head>
+        <style>
+          @page {
+            size: A4;
+            margin: 40mm 20mm; /* Top and bottom margins for the letter */
+          }
+          body {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            line-height: 1.6; /* Increased line height for better readability */
+            margin: 0;
+            padding: 0;
+          }
+          .letter {
+            width: 100%;
+            max-width: 100%;
+            text-align: left;
+          }
+          .header, .footer {
+            text-align: center;
+            margin-bottom: 20px;
+          }
+          .content {
+            margin-top: 20px;
+            margin-bottom: 20px; /* Add space below content */
+            text-align: justify;
+          }
+          .thank-you {
+            text-align: center;
+            margin-top: 20px;
+          }
+          .signature-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+          }
+          .signature {
+            text-align: left; /* Align signature to the left */
+            font-weight: bold;
+          }
+          .logo-container img {
+            max-width: 100px;
+            height: auto;
+            text-align: right; /* Align logo to the right */
+          }
+          .contact-info {
+            margin-top: 30px; /* Space above contact info */
+            border-top: 1px solid black; /* Black line */
+            padding-top: 10px; /* Space above the contact details */
+          }
+          .contact-left {
+            float: left;
+            width: 50%; /* Left side */
+            text-align: left;
+          }
+          .contact-right {
+            float: right;
+            width: 50%; /* Right side */
+            text-align: right;
+          }
+          .clearfix {
+            clear: both; /* Clear floats */
+          }
+          .address-space {
+            margin-bottom: 10px; /* Space below address before the link */
+          }
+        </style>
+      </head>
+      <body>
+        <div class="letter">
+          <div class="header">
+            <h1 style="font-weight: bold;">Magizh Technologies</h1>
+          </div>
+          <div class="content">
+            <p>
+              This is to certify that <strong>${formData.name}</strong> has successfully completed an internship training at our organization in the field of "<strong>${formData.projectName}</strong>." The internship was conducted from <strong>${formData.startDate}</strong> to <strong>${formData.endDate}</strong>, and during this period, <strong>${formData.name}</strong> demonstrated a keen interest in learning new technologies. We are pleased with their excellent performance.
+            </p>
+            <p>
+              We hereby declare that their internship with us is complete.
+            </p>
+            <div class="thank-you">
+              <p>Thank You.</p>
+            </div>
+          </div>
+          <div class="footer">
+            <div class="signature-section">
+              <div class="signature">
+                <p>Vijay.P</p>
+                <p>CEO, MagizhTech</p>
+              </div>
+              <div class="logo-container">
+                <img src="/msme.png" alt="Logo" />
+              </div>
+            </div>
+          </div>
+          <div class="contact-info">
+            <div class="contact-left">
+              <p>
+                28, 1st Floor, JK Complex,<br />
+                Above Indian Stores, Mettupalayam Main Road,<br />
+                North Rangasamudram, Sathyamangalam-638401
+              </p>
+              <p class="address-space">www.magizhtechnologies.com</p>
+            </div>
+            <div class="contact-right">
+              <p>info@magizhtechnologies.com</p>
+              <p>+91 9342209140</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
+
+    // Navigate to the new page with the letter content
+    navigate('/generated-letter', { state: { letterText } });
   };
 
   return (
@@ -85,11 +174,11 @@ export default function DocumentGenerator() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="content">Additional Content</Label>
-              <Textarea 
-                id="content" 
-                name="content" 
+              <Textarea
+                id="content"
+                name="content"
                 placeholder="Enter additional content for the letter..."
-                value={formData.content} 
+                value={formData.content}
                 onChange={handleInputChange}
               />
             </div>
@@ -97,7 +186,6 @@ export default function DocumentGenerator() {
           </form>
         </CardContent>
       </Card>
-      {/* Download Button - outside of the letter page */}
     </div>
   );
 }
