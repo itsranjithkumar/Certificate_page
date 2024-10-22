@@ -1,80 +1,90 @@
-// src/Components/GeneratedCertificate.jsx
 import React, { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { toPng } from 'html-to-image';
 import { jsPDF } from 'jspdf';
 
-
 const GeneratedCertificate = () => {
-  const { state } = useLocation(); // Get formData passed from the form
-  const certificateRef = useRef(); // Ref for the certificate div
+  const { state } = useLocation();
+  const certificateRef = useRef();
 
   const handleDownload = () => {
     const doc = new jsPDF();
     if (certificateRef.current) {
       toPng(certificateRef.current).then((dataUrl) => {
-        doc.addImage(dataUrl, 'PNG', 10, 10, 190, 0); // Fit image to page
-        doc.save('certificate.pdf'); // Download as PDF
+        doc.addImage(dataUrl, 'PNG', 10, 10, 190, 0);
+        doc.save('certificate.pdf');
       });
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+      {/* Certificate Container */}
       <div
-        className="certificate-box bg-white p-12 shadow-2xl rounded-xl border-[20px] border-gray-300 max-w-4xl relative"
+        className="relative w-[900px] h-[600px] bg-white shadow-lg border-[8px] border-solid border-gray-300 rounded-xl p-10"
         ref={certificateRef}
       >
-        {/* Decorative border */}
-        <div className="absolute inset-0 border-[8px] border-dashed border-gray-400 rounded-xl pointer-events-none"></div>
+        {/* Decorative Border */}
+        <div className="absolute inset-0 border-[4px] border-dashed border-gray-500 rounded-lg pointer-events-none" />
 
-        {/* Simple "M" Logo */}
-        <div className="flex justify-center mb-6">
-          <div className="w-28 h-28 flex items-center justify-center bg-indigo-500 text-white text-5xl font-bold rounded-full border-4 border-gray-200">
-            M
-          </div>
+        {/* Logo Section */}
+        <div className="flex justify-center mb-4">
+          <img
+            src="/logo.png" // Adjust path for your logo
+            alt="Company Logo"
+            className="w-20 h-20" // Reduced size of the logo
+            style={{ marginTop: '10px' }} // Adjusted margin for better positioning
+          />
         </div>
 
         {/* Certificate Title */}
-        <h1 className="text-5xl font-serif font-bold mb-2 text-gray-700 tracking-wide">
-          Certificate of Accomplishment
+        <h1 className="text-4xl font-bold text-center mb-4 text-gray-800" style={{ fontFamily: 'serif' }}>
+          Certificate of Achievement
         </h1>
 
-        {/* Sub-title */}
-        <p className="text-lg text-indigo-600 italic tracking-widest mb-10">
-          {state.course}
+        {/* Subtitle */}
+        <p className="text-center text-lg italic mb-10 text-gray-600">
+          This is to certify that
         </p>
 
-        {/* Presented To */}
-        <h2 className="text-2xl text-gray-500 mb-4 font-light">Presented to</h2>
-        <h1 className="text-6xl font-bold text-black mb-4 tracking-tight underline decoration-indigo-600">
-          {state.name} {/* Ensure state.name is passed correctly */}
-        </h1>
+        {/* Name Section */}
+        <h2 className="text-5xl font-bold text-center mb-6 text-gray-900" style={{ fontFamily: 'Pacifico, cursive' }}>
+          {state.name}
+        </h2>
 
-        {/* Certification Text */}
-        <p className="text-md text-gray-600 italic mb-6 leading-relaxed">
-          The bearer of this certificate has passed the Magizh Technologies
-          skill certification test.
+        {/* Course or Achievement */}
+        <p className="text-center text-xl italic mb-8 text-gray-700">
+          has successfully completed the {state.course} program
         </p>
 
-        {/* Certification Info */}
-        <div className="flex justify-between text-left mt-8 text-gray-700 text-lg font-light">
-          <div>
-            <p><strong>Earned on:</strong> {state.issueDate}</p>
-            <p><strong>ID:</strong> {state.certificateId}</p>
+        {/* Issue Date and Certificate ID */}
+        <div className="flex justify-between w-[700px] mx-auto text-lg text-gray-600 mb-8">
+          <div className="text-left">
+            <p><strong>Issue Date:</strong> {state.issueDate}</p>
           </div>
           <div className="text-right">
-            <p className="font-bold">Harishankaran K</p>
-            <p>CTO, HackerRank</p>
+            <p><strong>Certificate ID:</strong> {state.certificateId}</p>
+          </div>
+        </div>
+
+        {/* Signature Section */}
+        <div className="flex justify-between w-[700px] mx-auto text-lg text-gray-700">
+          <div className="text-center">
+            <p className="font-bold">John Doe</p>
+            <p>Course Instructor</p>
+          </div>
+          <div className="text-center">
+            <p className="font-bold">Vijay P.</p>
+            <p>CEO, MagizhTech</p> {/* Updated title and name */}
           </div>
         </div>
       </div>
 
-      {/* Centered and Enlarged Download Button */}
-      <div className="flex justify-center mt-12">
+      {/* Download Button */}
+      <div className="mt-8">
         <button
           onClick={handleDownload}
-          className="bg-gradient-to-r from-green-400 to-blue-500 text-white px-16 py-5 text-2xl rounded-full shadow-lg hover:scale-105 transition duration-300"
+          className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
         >
           Download Certificate
         </button>
@@ -84,13 +94,3 @@ const GeneratedCertificate = () => {
 };
 
 export default GeneratedCertificate;
-
-
-
-
-
-
-
-
-
-
