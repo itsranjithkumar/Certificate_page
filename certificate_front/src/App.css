@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+  font-family: 'Arial', sans-serif; /* Default font */
+}
+
+/* Add any additional custom styles here */
