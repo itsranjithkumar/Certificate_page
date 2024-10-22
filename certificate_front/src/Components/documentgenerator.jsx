@@ -25,6 +25,9 @@ export default function DocumentGenerator() {
   const generateDocument = (e) => {
     e.preventDefault();
 
+    // Replace newlines with <br /> in the content
+    const formattedContent = formData.content.replace(/\n/g, '<br />');
+
     const letterText = `
       <html>
       <head>
@@ -53,6 +56,8 @@ export default function DocumentGenerator() {
             margin-top: 20px;
             margin-bottom: 20px; /* Add space below content */
             text-align: justify;
+            max-height: 300px; /* Limit the height of the content area */
+            overflow-y: auto; /* Enable scrolling if content exceeds the height */
           }
           .thank-you {
             text-align: center;
@@ -108,6 +113,9 @@ export default function DocumentGenerator() {
             <p>
               We hereby declare that their internship with us is complete.
             </p>
+            <p>
+              ${formattedContent} <!-- Additional content added here -->
+            </p>
             <div class="thank-you">
               <p>Thank You.</p>
             </div>
@@ -127,7 +135,7 @@ export default function DocumentGenerator() {
             <div class="contact-left">
               <p>
                 28, 1st Floor, JK Complex,<br />
-                Above Indian Stores, Mettupalayam Main Road,<br />
+                
                 North Rangasamudram, Sathyamangalam-638401
               </p>
               <p class="address-space">www.magizhtechnologies.com</p>
