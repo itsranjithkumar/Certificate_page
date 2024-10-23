@@ -25,7 +25,6 @@ export default function DocumentGenerator() {
   const generateDocument = (e) => {
     e.preventDefault();
 
-    // Replace newlines with <br /> in the content
     const formattedContent = formData.content.replace(/\n/g, '<br />');
 
     const letterText = `
@@ -38,8 +37,8 @@ export default function DocumentGenerator() {
           }
           body {
             font-family: Arial, sans-serif;
-            font-size: 12pt; /* Increased base font size */
-            line-height: 1.4; /* Increased line height for better readability */
+            font-size: 12pt;
+            line-height: 1.4;
             margin: 0;
             padding: 0;
           }
@@ -60,13 +59,13 @@ export default function DocumentGenerator() {
           .thank-you {
             text-align: center;
             margin-top: 10px;
-            font-size: 14pt; /* Increased size for "Thank You" text */
+            font-size: 14pt;
           }
           .logo-container {
             display: flex;
             justify-content: center;
-            margin-top: 20px; /* Adjusted margin-top to create more space */
-            margin-bottom: 20px; /* Added margin-bottom for more space under the logo */
+            margin-top: 20px;
+            margin-bottom: 20px;
           }
           .logo-container img {
             max-width: 90px;
@@ -75,8 +74,8 @@ export default function DocumentGenerator() {
             padding: 0;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
             object-fit: contain;
-            border-radius: 50%; /* Making the logo round */
-            margin-top: -10px; /* Moves the logo slightly upwards */
+            border-radius: 50%;
+            margin-top: -10px;
           }
           .signature-section {
             display: flex;
@@ -87,7 +86,7 @@ export default function DocumentGenerator() {
           .signature {
             text-align: left;
             font-weight: bold;
-            font-size: 12pt; /* Increased signature font size */
+            font-size: 12pt;
           }
           .contact-info {
             margin-top: 20px;
@@ -110,14 +109,14 @@ export default function DocumentGenerator() {
           }
           p {
             margin: 0 0 5px;
-            font-size: 12pt; /* Increased paragraph font size */
+            font-size: 12pt;
           }
         </style>
       </head>
       <body>
         <div class="letter">
           <div class="header">
-            <h1 style="font-weight: bold; font-size: 18pt;">Magizh Technologies</h1> <!-- Increased header font size -->
+            <h1 style="font-weight: bold; font-size: 18pt;">Magizh Technologies</h1>
           </div>
           <div class="content">
             <p>
@@ -166,15 +165,14 @@ export default function DocumentGenerator() {
       </html>
     `;
 
-    // Navigate to a new page with the generated letter content
     navigate('/generated-letter', { state: { letterText } });
   };
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Document Generator</CardTitle>
-        <CardDescription>
+        <CardTitle style={{ fontSize: '1.25rem' }}>Document Generator</CardTitle>
+        <CardDescription style={{ fontSize: '1.1rem' }}>
           Fill out the details to generate your internship certificate.
         </CardDescription>
       </CardHeader>
@@ -182,27 +180,27 @@ export default function DocumentGenerator() {
         <form onSubmit={generateDocument}>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your Name" />
+              <Label htmlFor="name" style={{ fontSize: '1rem' }}>Name</Label>
+              <Input id="name" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your Name" style={{ fontSize: '1rem', padding: '8px' }} />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="startDate">Start Date</Label>
-              <Input id="startDate" name="startDate" type="date" value={formData.startDate} onChange={handleInputChange} />
+              <Label htmlFor="startDate" style={{ fontSize: '1rem' }}>Start Date</Label>
+              <Input id="startDate" name="startDate" type="date" value={formData.startDate} onChange={handleInputChange} style={{ fontSize: '1rem', padding: '8px' }} />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="endDate">End Date</Label>
-              <Input id="endDate" name="endDate" type="date" value={formData.endDate} onChange={handleInputChange} />
+              <Label htmlFor="endDate" style={{ fontSize: '1rem' }}>End Date</Label>
+              <Input id="endDate" name="endDate" type="date" value={formData.endDate} onChange={handleInputChange} style={{ fontSize: '1rem', padding: '8px' }} />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="projectName">Project Name</Label>
-              <Input id="projectName" name="projectName" value={formData.projectName} onChange={handleInputChange} placeholder="Project Name" />
+              <Label htmlFor="projectName" style={{ fontSize: '1rem' }}>Project Name</Label>
+              <Input id="projectName" name="projectName" value={formData.projectName} onChange={handleInputChange} placeholder="Project Name" style={{ fontSize: '1rem', padding: '8px' }} />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="content">Additional Content</Label>
-              <Textarea id="content" name="content" value={formData.content} onChange={handleInputChange} placeholder="Additional content for the certificate" />
+              <Label htmlFor="content" style={{ fontSize: '1rem' }}>Additional Content</Label>
+              <Textarea id="content" name="content" value={formData.content} onChange={handleInputChange} placeholder="Additional content for the certificate" style={{ fontSize: '1rem', padding: '8px' }} />
             </div>
           </div>
-          <Button className="mt-4" type="submit">Generate Document</Button>
+          <Button className="mt-4" type="submit" style={{ fontSize: '1rem', padding: '10px 20px' }}>Generate Document</Button>
         </form>
       </CardContent>
     </Card>
