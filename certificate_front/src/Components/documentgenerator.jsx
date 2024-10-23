@@ -61,6 +61,15 @@ export default function DocumentGenerator() {
             text-align: center;
             margin-top: 10px;
           }
+          .logo-container {
+            display: flex; /* Use flex for centering */
+            justify-content: center; /* Center the logo */
+            margin-top: 5px; /* Add some space above the logo */
+          }
+          .logo-container img {
+            max-width: 90px; /* Reduce the size of the logo */
+            height: auto;
+          }
           .signature-section {
             display: flex;
             justify-content: space-between;
@@ -70,13 +79,6 @@ export default function DocumentGenerator() {
           .signature {
             text-align: left;
             font-weight: bold;
-          }
-          .logo-container {
-            text-align: center;
-          }
-          .logo-container img {
-            max-width: 100px;
-            height: auto;
           }
           .contact-info {
             margin-top: 20px;
@@ -121,15 +123,15 @@ export default function DocumentGenerator() {
             <div class="thank-you">
               <p>Thank You.</p>
             </div>
+            <div class="logo-container">
+              <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
+            </div>
           </div>
           <div class="footer">
             <div class="signature-section">
               <div class="signature">
                 <p>Vijay.P</p>
                 <p>CEO, MagizhTech</p>
-              </div>
-              <div class="logo-container">
-                <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
               </div>
               <div class="logo-container">
                 <img src="/msme.png" alt="MSME Logo" />
