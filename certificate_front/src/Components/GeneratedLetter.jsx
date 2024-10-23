@@ -8,18 +8,25 @@ const GeneratedLetter = () => {
 
   const downloadLetter = () => {
     const letterContent = document.getElementById("letter-content");
+
+    // Temporarily remove shadow before capturing
+    letterContent.classList.remove('shadow-lg');
+
     html2canvas(letterContent).then((canvas) => {
       const link = document.createElement('a');
       link.download = 'internship_letter.png';
       link.href = canvas.toDataURL();
       link.click();
+
+      // Add shadow back after download
+      letterContent.classList.add('shadow-lg');
     });
   };
 
   return (
     <div className="container mx-auto p-4">
-      {/* Letter Content with Soft Gray Border */}
-      <div id="letter-content" className="relative bg-gray-50 p-10 shadow-lg max-w-3xl mx-auto my-8 border-[12px] border-double border-gray-400 rounded-xl">
+      {/* Letter Content without Shadow */}
+      <div id="letter-content" className="relative bg-gray-50 p-10 max-w-3xl mx-auto my-8 border-[12px] border-double border-gray-400 rounded-xl shadow-lg">
         
         {/* Logo and Header */}
         <div className="text-center mb-8">
@@ -60,7 +67,7 @@ const GeneratedLetter = () => {
 
       {/* Button to Download the Letter */}
       <div className="text-center mt-8">
-        <button onClick={downloadLetter} className="bg-gray-700 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-gray-800 transition duration-300">
+        <button onClick={downloadLetter} className="bg-gray-700 text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition duration-300">
           Download Letter
         </button>
       </div>
