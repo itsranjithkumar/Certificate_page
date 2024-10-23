@@ -1,107 +1,84 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import html2pdf from 'html2pdf.js';
 
-const CertificatePage = () => {
-  const [name, setName] = useState("");
-  const [issueDate, setIssueDate] = useState("");
-  const [certificateId, setCertificateId] = useState(""); // Added certificate ID
-  const [selectedCourse, setSelectedCourse] = useState(""); // Renamed to selectedCourse
-  
-  const navigate = useNavigate();
+const GeneratedLetter = () => {
+  const location = useLocation();
+  const { letterText } = location.state || {};
 
-  const generateCertificate = () => {
-    // Validate the inputs
-    if (!name || !issueDate || !certificateId || !selectedCourse) {
-      alert("Please fill in all details before generating the certificate.");
-      return; // Stop execution if validation fails
-    }
+  const downloadLetter = () => {
+    const letterContent = document.getElementById("letter-content");
 
-    const certificateData = {
-      name,
-      issueDate,
-      certificateId,
-      course: selectedCourse // Use selectedCourse for course data
+    // Temporarily remove shadow before downloading PDF
+    letterContent.classList.remove('shadow-lg');
+
+    // Set options for html2pdf
+    const opt = {
+      margin: [0.5, 0.5], // Adjust margins as needed
+      filename: 'internship_letter.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true }, // Use a higher scale for better quality
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+      pagebreak: { mode: 'avoid-all' }, // Prevent page breaks within content
     };
 
-    navigate("/generate-certificate", { state: certificateData }); // Navigate to GeneratedCertificate page
+    // Generate and download PDF
+    html2pdf().from(letterContent).set(opt).save().then(() => {
+      // Re-add shadow after the PDF download is done
+      letterContent.classList.add('shadow-lg');
+    });
   };
 
   return (
-    <div className="flex flex-col items-center py-10">
-      <h1 className="text-3xl font-bold mb-6">Generate Your Certificate</h1>
-
-      {/* Form to collect details */}
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Name
-          </label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    <div className="container mx-auto p-4">
+      {/* Letter Content with Zoom Effect */}
+      <div
+        id="letter-content"
+        className="relative bg-gray-50 p-10 max-w-3xl mx-auto my-8 border-[12px] border-double border-gray-400 rounded-xl shadow-lg"
+        style={{ transform: 'scale(1.05)', transformOrigin: 'top left' }} // Slightly zoom content
+      >
+        
+        {/* Logo and Header */}
+        <div className="text-center mb-4">
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="mx-auto mb-1 rounded-full" // Adjusted margin to move the logo closer to the top
+            style={{ width: '80px', height: '80px' }} // Set width and height for the logo
           />
+          <h1 className="text-3xl font-bold text-gray-800" style={{ fontFamily: 'Engravers Old English, serif' }}>
+            Magizh Technologies
+          </h1>
+
+          {/* Black Horizontal Line */}
+          <div className="border-t-2 border-black my-2 w-full"></div>
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Issue Date
-          </label>
-          <input
-            type="date"
-            value={issueDate}
-            onChange={(e) => setIssueDate(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
+        {/* Date Right-Aligned */}
+        <div className="text-right mb-6 text-lg text-gray-600">
+          <p><strong>Date:</strong> {new Date().toLocaleDateString()}</p>
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Certificate ID
-          </label>
-          <input
-            type="text"
-            value={certificateId}
-            onChange={(e) => setCertificateId(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
+        {/* Letter Heading */}
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-semibold text-gray-700" style={{ fontFamily: 'Cursive, sans-serif' }}>
+            Internship Completion Letter
+          </h2>
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Select Course
-          </label>
-          <select
-            value={selectedCourse} // Set value to selectedCourse
-            onChange={(e) => setSelectedCourse(e.target.value)} // Update state on selection
-            className="block w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-          >
-            <option value="">Select</option>
-            <option value="FULL STACK DEVELOPER (Course Completed)">FULL STACK DEVELOPER (Course Completed)</option>
-            <option value="FULL STACK DEVELOPER (Internship Completed)">FULL STACK DEVELOPER (Internship Completed)</option>
-          </select>
-        </div>
+        {/* Letter Body */}
+        <div className="text-md text-gray-800 mb-8 leading-relaxed" dangerouslySetInnerHTML={{ __html: letterText }} />
+        
+      </div>
 
-        <button
-          type="button"
-          onClick={generateCertificate}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Generate Certificate
-        </button>
-        <button
-          onClick={() => {
-            // Navigate to the Internship Certificate page
-            navigate('/internship-certificate'); // Ensure you import useNavigate from 'react-router-dom'
-          }}
-          className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          View Internship Completion Certificate
+      {/* Button to Download the Letter */}
+      <div className="text-center mt-4">
+        <button onClick={downloadLetter} className="bg-gray-700 text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition duration-300">
+          Download Letter as PDF
         </button>
       </div>
     </div>
   );
 };
 
-export default CertificatePage;
+export default GeneratedLetter;

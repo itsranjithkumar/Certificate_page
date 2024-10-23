@@ -38,8 +38,8 @@ export default function DocumentGenerator() {
           }
           body {
             font-family: Arial, sans-serif;
-            font-size: 10pt;
-            line-height: 1.2;
+            font-size: 12pt; /* Increased base font size */
+            line-height: 1.4; /* Increased line height for better readability */
             margin: 0;
             padding: 0;
           }
@@ -60,6 +60,7 @@ export default function DocumentGenerator() {
           .thank-you {
             text-align: center;
             margin-top: 10px;
+            font-size: 14pt; /* Increased size for "Thank You" text */
           }
           .logo-container {
             display: flex;
@@ -72,6 +73,7 @@ export default function DocumentGenerator() {
             background-color: transparent;
             padding: 5px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 50%; /* Make the logo round */
           }
           .signature-section {
             display: flex;
@@ -82,6 +84,7 @@ export default function DocumentGenerator() {
           .signature {
             text-align: left;
             font-weight: bold;
+            font-size: 12pt; /* Increased signature font size */
           }
           .contact-info {
             margin-top: 20px;
@@ -104,13 +107,14 @@ export default function DocumentGenerator() {
           }
           p {
             margin: 0 0 5px;
+            font-size: 12pt; /* Increased paragraph font size */
           }
         </style>
       </head>
       <body>
         <div class="letter">
           <div class="header">
-            <h1 style="font-weight: bold;">Magizh Technologies</h1>
+            <h1 style="font-weight: bold; font-size: 18pt;">Magizh Technologies</h1> <!-- Increased header font size -->
           </div>
           <div class="content">
             <p>
@@ -126,7 +130,7 @@ export default function DocumentGenerator() {
               <p>Thank You.</p>
             </div>
             <div class="logo-container">
-              <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
+              <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" style="border-radius: 50%;" />
             </div>
           </div>
           <div class="footer">
@@ -136,7 +140,7 @@ export default function DocumentGenerator() {
                 <p>CEO, MagizhTech</p>
               </div>
               <div class="logo-container">
-                <img src="/msme.png" alt="MSME Logo" />
+                <img src="/msme.png" alt="MSME Logo" style="border-radius: 50%;" />
               </div>
             </div>
           </div>
