@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,7 +15,7 @@ export default function DocumentGenerator() {
     content: ''
   });
 
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +39,7 @@ export default function DocumentGenerator() {
           body {
             font-family: Arial, sans-serif;
             font-size: 10pt;
-            line-height: 1.2; /* Reduced line-height to minimize space between lines */
+            line-height: 1.2;
             margin: 0;
             padding: 0;
           }
@@ -55,24 +55,23 @@ export default function DocumentGenerator() {
             margin-top: 10px;
             margin-bottom: 10px;
             text-align: justify;
-            word-wrap: break-word;  /* Break long words */
+            word-wrap: break-word;
           }
           .thank-you {
             text-align: center;
             margin-top: 10px;
           }
           .logo-container {
-            display: flex; /* Use flex for centering */
-            justify-content: center; /* Center the logo */
-            margin-top: 5px; /* Add some space above the logo */
+            display: flex;
+            justify-content: center;
+            margin-top: 5px;
           }
           .logo-container img {
-            max-width: 90px; /* Maintain the max width */
-            height: auto; /* Keep the height auto to maintain aspect ratio */
-            border-radius: 50%; /* Make the logo round */
-            background-color: transparent; /* Ensure the background is transparent */
-            padding: 5px; /* Optional: add some padding to make it look better */
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Optional: add a subtle shadow for depth */
+            max-width: 90px;
+            height: auto;
+            background-color: transparent;
+            padding: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
           }
           .signature-section {
             display: flex;
@@ -88,11 +87,11 @@ export default function DocumentGenerator() {
             margin-top: 20px;
             border-top: 1px solid black;
             padding-top: 5px;
-            display: flex; /* Change to flex for better alignment */
-            justify-content: space-between; /* Align items across */
+            display: flex;
+            justify-content: space-between;
           }
           .contact-left, .contact-right {
-            width: 45%; /* Adjust width to make them fit well */
+            width: 45%;
           }
           .contact-left {
             text-align: left;
@@ -103,9 +102,8 @@ export default function DocumentGenerator() {
           .address-space {
             margin-bottom: 5px;
           }
-          /* Reducing margin around paragraphs */
           p {
-            margin: 0 0 5px; /* Set margin to 0 and reduce bottom spacing to 5px */
+            margin: 0 0 5px;
           }
         </style>
       </head>
@@ -122,7 +120,7 @@ export default function DocumentGenerator() {
               We hereby declare that their internship with us is complete.
             </p>
             <p>
-              ${formattedContent} <!-- Additional content will automatically wrap and go to next line -->
+              ${formattedContent}
             </p>
             <div class="thank-you">
               <p>Thank You.</p>
