@@ -34,43 +34,41 @@ export default function DocumentGenerator() {
         <style>
           @page {
             size: A4;
-            margin: 40mm 20mm; /* Top and bottom margins for the letter */
+            margin: 20mm;
           }
           body {
             font-family: Arial, sans-serif;
-            font-size: 12pt;
-            line-height: 1.6; /* Increased line height for better readability */
+            font-size: 10pt;
+            line-height: 1.2; /* Reduced line-height to minimize space between lines */
             margin: 0;
             padding: 0;
           }
           .letter {
             width: 100%;
-            max-width: 100%;
             text-align: left;
           }
           .header, .footer {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
           }
           .content {
-            margin-top: 20px;
-            margin-bottom: 20px; /* Add space below content */
+            margin-top: 10px;
+            margin-bottom: 10px;
             text-align: justify;
-            max-height: 300px; /* Limit the height of the content area */
-            overflow-y: auto; /* Enable scrolling if content exceeds the height */
+            word-wrap: break-word;  /* Break long words */
           }
           .thank-you {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
           }
           .signature-section {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
+            margin-top: 10px;
           }
           .signature {
-            text-align: left; /* Align signature to the left */
+            text-align: left;
             font-weight: bold;
           }
           .logo-container {
@@ -81,28 +79,32 @@ export default function DocumentGenerator() {
             height: auto;
           }
           .contact-info {
-            margin-top: 30px; /* Space above contact info */
-            border-top: 1px solid black; /* Black line */
-            padding-top: 10px; /* Space above the contact details */
+            margin-top: 20px;
+            border-top: 1px solid black;
+            padding-top: 5px;
           }
           .contact-left {
             float: left;
-            width: 50%; /* Left side */
+            width: 50%;
             text-align: left;
           }
           .contact-right {
             float: right;
-            width: 50%; /* Right side */
+            width: 50%;
             text-align: right;
           }
           .clearfix {
-            clear: both; /* Clear floats */
+            clear: both;
           }
           .address-space {
-            margin-bottom: 10px; /* Space below address before the link */
+            margin-bottom: 5px;
           }
-          .logo-move-left { /* New class for logo adjustment */
-            margin-left: -10px; /* Adjust the value as needed */
+          .logo-move-left {
+            margin-left: -10px;
+          }
+          /* Reducing margin around paragraphs */
+          p {
+            margin: 0 0 5px; /* Set margin to 0 and reduce bottom spacing to 5px */
           }
         </style>
       </head>
@@ -119,7 +121,7 @@ export default function DocumentGenerator() {
               We hereby declare that their internship with us is complete.
             </p>
             <p>
-              ${formattedContent} <!-- Additional content added here -->
+              ${formattedContent} <!-- Additional content will automatically wrap and go to next line -->
             </p>
             <div class="thank-you">
               <p>Thank You.</p>
@@ -131,7 +133,7 @@ export default function DocumentGenerator() {
                 <p>Vijay.P</p>
                 <p>CEO, MagizhTech</p>
               </div>
-              <div class="logo-container logo-move-left"> 
+              <div class="logo-container logo-move-left">
                 <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
               </div>
               <div class="logo-container">
@@ -158,49 +160,45 @@ export default function DocumentGenerator() {
       </html>
     `;
 
-    // Navigate to the new page with the letter content
+    // Navigate to a new page with the generated letter content
     navigate('/generated-letter', { state: { letterText } });
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <Card className="w-full max-w-md mx-auto mb-8">
-        <CardHeader>
-          <CardTitle>Internship Document Generator</CardTitle>
-          <CardDescription>Fill in the details to generate a letter</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={generateDocument} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
-              <Input id="name" name="name" required value={formData.name} onChange={handleInputChange} />
+    <Card>
+      <CardHeader>
+        <CardTitle>Document Generator</CardTitle>
+        <CardDescription>
+          Fill out the details to generate your internship certificate.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={generateDocument}>
+          <div className="grid w-full items-center gap-4">
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your Name" />
             </div>
-            <div className="space-y-2">
+            <div className="flex flex-col space-y-1.5">
               <Label htmlFor="startDate">Start Date</Label>
-              <Input id="startDate" name="startDate" type="date" required value={formData.startDate} onChange={handleInputChange} />
+              <Input id="startDate" name="startDate" type="date" value={formData.startDate} onChange={handleInputChange} />
             </div>
-            <div className="space-y-2">
+            <div className="flex flex-col space-y-1.5">
               <Label htmlFor="endDate">End Date</Label>
-              <Input id="endDate" name="endDate" type="date" required value={formData.endDate} onChange={handleInputChange} />
+              <Input id="endDate" name="endDate" type="date" value={formData.endDate} onChange={handleInputChange} />
             </div>
-            <div className="space-y-2">
+            <div className="flex flex-col space-y-1.5">
               <Label htmlFor="projectName">Project Name</Label>
-              <Input id="projectName" name="projectName" required value={formData.projectName} onChange={handleInputChange} />
+              <Input id="projectName" name="projectName" value={formData.projectName} onChange={handleInputChange} placeholder="Project Name" />
             </div>
-            <div className="space-y-2">
+            <div className="flex flex-col space-y-1.5">
               <Label htmlFor="content">Additional Content</Label>
-              <Textarea
-                id="content"
-                name="content"
-                placeholder="Enter additional content for the letter..."
-                value={formData.content}
-                onChange={handleInputChange}
-              />
+              <Textarea id="content" name="content" value={formData.content} onChange={handleInputChange} placeholder="Additional content for the certificate" />
             </div>
-            <Button type="submit" className="w-full">Generate Letter</Button>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
+          </div>
+          <Button className="mt-4" type="submit">Generate Document</Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 }
