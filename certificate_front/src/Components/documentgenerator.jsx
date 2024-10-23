@@ -71,9 +71,11 @@ export default function DocumentGenerator() {
             max-width: 90px;
             height: auto;
             background-color: transparent;
-            padding: 5px;
+            padding: 0;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            border-radius: 50%; /* Make the logo round */
+            object-fit: contain;
+            border-radius: 10%;
+            margin-top: -10px; /* Moves the logo slightly upwards */
           }
           .signature-section {
             display: flex;
@@ -130,7 +132,7 @@ export default function DocumentGenerator() {
               <p>Thank You.</p>
             </div>
             <div class="logo-container">
-              <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" style="border-radius: 50%;" />
+              <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
             </div>
           </div>
           <div class="footer">
@@ -140,7 +142,7 @@ export default function DocumentGenerator() {
                 <p>CEO, MagizhTech</p>
               </div>
               <div class="logo-container">
-                <img src="/msme.png" alt="MSME Logo" style="border-radius: 50%;" />
+                <img src="/msme.png" alt="MSME Logo" />
               </div>
             </div>
           </div>

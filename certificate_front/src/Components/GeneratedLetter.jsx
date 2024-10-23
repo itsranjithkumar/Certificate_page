@@ -47,7 +47,7 @@ const GeneratedLetter = () => {
             src="/logo.png"
             alt="Logo"
             className="mx-auto mb-1 rounded-full"
-            style={{ width: '80px', height: '80px' }} // Set width and height for the logo
+            style={{ width: '100px', height: '120px' }} // Set width and height for the logo
           />
           <h1 className="text-3xl font-bold text-gray-800" style={{ fontFamily: 'Engravers Old English, serif' }}>
             Magizh Technologies
