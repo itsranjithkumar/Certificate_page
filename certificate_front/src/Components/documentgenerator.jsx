@@ -82,25 +82,20 @@ export default function DocumentGenerator() {
             margin-top: 20px;
             border-top: 1px solid black;
             padding-top: 5px;
+            display: flex; /* Change to flex for better alignment */
+            justify-content: space-between; /* Align items across */
+          }
+          .contact-left, .contact-right {
+            width: 45%; /* Adjust width to make them fit well */
           }
           .contact-left {
-            float: left;
-            width: 50%;
             text-align: left;
           }
           .contact-right {
-            float: right;
-            width: 50%;
             text-align: right;
-          }
-          .clearfix {
-            clear: both;
           }
           .address-space {
             margin-bottom: 5px;
-          }
-          .logo-move-left {
-            margin-left: -10px;
           }
           /* Reducing margin around paragraphs */
           p {
@@ -133,7 +128,7 @@ export default function DocumentGenerator() {
                 <p>Vijay.P</p>
                 <p>CEO, MagizhTech</p>
               </div>
-              <div class="logo-container logo-move-left">
+              <div class="logo-container">
                 <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
               </div>
               <div class="logo-container">
@@ -144,7 +139,6 @@ export default function DocumentGenerator() {
           <div class="contact-info">
             <div class="contact-left">
               <p>
-                <br />
                 North Rangasamudram, Sathyamangalam-638401<br />
               </p>
               <p class="address-space">www.magizhtechnologies.com</p>
@@ -153,7 +147,6 @@ export default function DocumentGenerator() {
               <p>info@magizhtechnologies.com</p>
               <p>+91 9342209140</p>
             </div>
-            <div class="clearfix"></div>
           </div>
         </div>
       </body>
