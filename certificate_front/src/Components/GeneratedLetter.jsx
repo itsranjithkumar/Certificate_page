@@ -38,7 +38,7 @@ const GeneratedLetter = () => {
       {/* Letter Content with Zoom Effect */}
       <div
         id="letter-content"
-        className="relative bg-gray-50 p-10 max-w-3xl mx-auto my-8 border-[12px] border-double border-gray-400 rounded-xl shadow-lg"
+        className="relative bg-gray-50 p-10 max-w-3xl mx-auto my-8 border-[12px] border-double border-yellow-500 rounded-xl shadow-lg" // Updated to gold border
         style={{ transform: 'scale(1)', transformOrigin: 'top left' }} // Reset zoom to ensure single page
       >
         {/* Logo and Header */}
