@@ -14,12 +14,12 @@ const GeneratedLetter = () => {
 
     // Set options for html2pdf
     const opt = {
-      margin: [0.5, 0.5], // Adjust margins to fit content better
+      margin: 0, // Remove margin to maximize space for content
       filename: 'internship_letter.pdf',
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true },
+      html2canvas: { scale: 1.5, useCORS: true }, // Slightly lower scale for better fit
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-      pagebreak: { mode: 'avoid-all' }, // Prevent page breaks within content
+      pagebreak: { mode: ['avoid-all', 'css'] }, // Avoid page breaks within elements
     };
 
     // Generate and download PDF
@@ -35,21 +35,21 @@ const GeneratedLetter = () => {
 
   return (
     <div className="container mx-auto p-4">
-      {/* Letter Content with Zoom Effect */}
+      {/* Letter Content with reduced padding */}
       <div
         id="letter-content"
-        className="relative bg-gray-50 p-10 max-w-3xl mx-auto my-8 border-[12px] border-double border-yellow-500 rounded-xl shadow-lg" // Updated to gold border
-        style={{ transform: 'scale(1)', transformOrigin: 'top left' }} // Reset zoom to ensure single page
+        className="relative bg-gray-50 p-6 max-w-3xl mx-auto my-4 border-[8px] border-double border-yellow-500 rounded-xl shadow-lg"
+        style={{ pageBreakInside: 'avoid', fontSize: '0.9rem' }} // Smaller font to fit better
       >
         {/* Logo and Header */}
-        <div className="text-center mb-4">
+        <div className="text-center mb-3">
           <img
             src="/logo.png"
             alt="Logo"
-            className="mx-auto mb-1 rounded-full"
-            style={{ width: '100px', height: '120px' }} // Set width and height for the logo
+            className="mx-auto mb-2 rounded-full"
+            style={{ width: '100px', height: '110px' }} // Slightly smaller logo
           />
-          <h1 className="text-3xl font-bold text-gray-800" style={{ fontFamily: 'Engravers Old English, serif' }}>
+          <h1 className="text-2xl font-bold text-gray-800" style={{ fontFamily: 'Engravers Old English, serif' }}>
             Magizh Technologies
           </h1>
 
@@ -58,19 +58,19 @@ const GeneratedLetter = () => {
         </div>
 
         {/* Date Right-Aligned */}
-        <div className="text-right mb-6 text-lg text-gray-600">
+        <div className="text-right mb-4 text-lg text-gray-600">
           <p><strong>Date:</strong> {new Date().toLocaleDateString()}</p>
         </div>
 
         {/* Letter Heading */}
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-semibold text-gray-700" style={{ fontFamily: 'Cursive, sans-serif' }}>
+        <div className="text-center mb-6">
+          <h2 className="text-xl font-semibold text-gray-700" style={{ fontFamily: 'Cursive, sans-serif' }}>
             Internship Completion Letter
           </h2>
         </div>
 
         {/* Letter Body */}
-        <div className="text-md text-gray-800 mb-8 leading-relaxed" dangerouslySetInnerHTML={{ __html: letterText }} />
+        <div className="text-md text-gray-800 mb-4 leading-relaxed" dangerouslySetInnerHTML={{ __html: letterText }} />
       </div>
 
       {/* Button to Download the Letter */}

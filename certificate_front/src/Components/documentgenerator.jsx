@@ -65,7 +65,8 @@ export default function DocumentGenerator() {
           .logo-container {
             display: flex;
             justify-content: center;
-            margin-top: 5px;
+            margin-top: 20px; /* Adjusted margin-top to create more space */
+            margin-bottom: 20px; /* Added margin-bottom for more space under the logo */
           }
           .logo-container img {
             max-width: 90px;
@@ -74,7 +75,7 @@ export default function DocumentGenerator() {
             padding: 0;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
             object-fit: contain;
-            border-radius: 10%;
+            border-radius: 50%; /* Making the logo round */
             margin-top: -10px; /* Moves the logo slightly upwards */
           }
           .signature-section {
@@ -129,7 +130,7 @@ export default function DocumentGenerator() {
               ${formattedContent}
             </p>
             <div class="thank-you">
-              <p>Thank You.</p>
+              <p><strong>Thank You,</strong></p>
             </div>
             <div class="logo-container">
               <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
@@ -148,14 +149,16 @@ export default function DocumentGenerator() {
           </div>
           <div class="contact-info">
             <div class="contact-left">
-              <p>
-                North Rangasamudram, Sathyamangalam-638401<br />
-              </p>
-              <p class="address-space">www.magizhtechnologies.com</p>
+<p>
+ <strong> North Rangasamudram,</strong><br />
+  <strong>Sathyamangalam-638401</strong><br />
+</p>
+
+              <p class="address-space"><strong>www.magizhtechnologies.com</strong></p>
             </div>
             <div class="contact-right">
-              <p>info@magizhtechnologies.com</p>
-              <p>+91 9342209140</p>
+              <p><strong>info@magizhtechnologies.com</strong></p>
+              <p><strong>+91 9342209140</strong></p>
             </div>
           </div>
         </div>
