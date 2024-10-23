@@ -34,7 +34,7 @@ const GeneratedCertificate = () => {
           <img
             src="/logo.png" // Adjust path to your top logo image
             alt="Organization Logo"
-            className="w-16 h-16" // Smaller size for the top logo
+            className="w-50 h-20" // Smaller size for the top logo
           />
         </div>
 

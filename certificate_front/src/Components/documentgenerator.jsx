@@ -67,8 +67,12 @@ export default function DocumentGenerator() {
             margin-top: 5px; /* Add some space above the logo */
           }
           .logo-container img {
-            max-width: 90px; /* Reduce the size of the logo */
-            height: auto;
+            max-width: 90px; /* Maintain the max width */
+            height: auto; /* Keep the height auto to maintain aspect ratio */
+            border-radius: 50%; /* Make the logo round */
+            background-color: transparent; /* Ensure the background is transparent */
+            padding: 5px; /* Optional: add some padding to make it look better */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Optional: add a subtle shadow for depth */
           }
           .signature-section {
             display: flex;
