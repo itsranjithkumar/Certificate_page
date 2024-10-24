@@ -74,8 +74,7 @@ export default function DocumentGenerator() {
             padding: 0;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
             object-fit: contain;
-            border-radius: 50%;
-            margin-top: -10px;
+            border-radius: 50%; /* Make the logo round */
           }
           .signature-section {
             display: flex;
@@ -92,22 +91,16 @@ export default function DocumentGenerator() {
           .center-logo {
             text-align: center;
             margin-top: 20px;
-            margin-left: -20px; /* Adjust the left margin to shift the logo left */
+            margin-left: -30px; /* Move logo slightly more to the left */
           }
           .center-logo img {
-            max-width: 100px;
-            height: auto;
+            max-width: 110px; /* Increased logo size */
+            height: 110px; /* Set a fixed height to maintain the round shape */
             background-color: transparent;
             padding: 0;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
             object-fit: contain;
-            margin-top: 10px;
-          }
-          .logo-container img {
-            max-width: 100px;
-            height: auto;
-            object-fit: contain;
-            margin-left: 20px;
+            border-radius: 50%; /* Make the logo round */
           }
           .contact-info {
             margin-top: 20px;
@@ -131,6 +124,13 @@ export default function DocumentGenerator() {
           p {
             margin: 0 0 5px;
             font-size: 12pt;
+          }
+          .magizh-logo {
+            border-radius: 50%; /* Make the logo round */
+            margin-left: -30px; /* Move logo slightly to the left */
+            max-width: 110px; /* Increased logo size */
+            height: 110px; /* Set a fixed height to maintain the round shape */
+            object-fit: cover; /* Ensure the logo scales correctly within the container */
           }
         </style>
       </head>
@@ -161,7 +161,7 @@ export default function DocumentGenerator() {
               </div>
               
               <div class="center-logo">
-                <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
+                <img className="magizh-logo" src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
               </div>
               
               <div class="logo-container">
@@ -172,14 +172,16 @@ export default function DocumentGenerator() {
           <div class="contact-info">
             <div class="contact-left">
               <p>
-                <strong>North Rangasamudram,</strong><br />
+                <strong>28,1st Floor, JK Complex,
+<br>Above Old Indian Stores,</strong><br />
                 <strong>Sathyamangalam-638401</strong><br />
               </p>
-              <p class="address-space"><strong>www.magizhtechnologies.com</strong></p>
             </div>
             <div class="contact-right">
               <p><strong>info@magizhtechnologies.com</strong></p>
+              <p class="address-space"><strong>www.magizhtechnologies.com</strong></p>
               <p><strong>+91 9342209140</strong></p>
+
             </div>
           </div>
         </div>
@@ -218,11 +220,11 @@ export default function DocumentGenerator() {
               <Input id="projectName" name="projectName" value={formData.projectName} onChange={handleInputChange} placeholder="Project Name" style={{ fontSize: '1rem', padding: '8px' }} />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="content" style={{ fontSize: '1rem' }}>Additional Content</Label>
-              <Textarea id="content" name="content" value={formData.content} onChange={handleInputChange} placeholder="Additional content for the certificate" style={{ fontSize: '1rem', padding: '8px' }} />
+              <Label htmlFor="content" style={{ fontSize: '1rem' }}>Content</Label>
+              <Textarea id="content" name="content" value={formData.content} onChange={handleInputChange} placeholder="Additional Content" style={{ fontSize: '1rem', padding: '8px' }} />
             </div>
           </div>
-          <Button className="mt-4" type="submit" style={{ fontSize: '1rem', padding: '10px 20px' }}>Generate Document</Button>
+          <Button type="submit" variant="outline" style={{ marginTop: '20px' }}>Generate Document</Button>
         </form>
       </CardContent>
     </Card>

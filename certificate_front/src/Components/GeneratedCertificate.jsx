@@ -21,14 +21,14 @@ const GeneratedCertificate = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
       {/* Certificate Container */}
       <div
-        className="relative w-[1300px] h-[850px] bg-white shadow-lg p-8 overflow-hidden"
+        className="relative w-[1600px] h-[1000px] bg-white shadow-lg p-8 overflow-hidden" // Increased width and height
         ref={certificateRef}
         style={{
           background: '#f8f8f8',
-          border: '10px double #D4AF37', // Elegant double gold borders
+          border: '10px double #D4AF37',
           padding: '40px',
           position: 'relative',
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Add shadow to the container
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
         }}
       >
         {/* Watermark Background */}
@@ -56,45 +56,46 @@ const GeneratedCertificate = () => {
               src="/logo.png"
               alt="Organization Logo"
               className="w-20 h-30 mb-8"
-              style={{ filter: 'drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5))' }} // Shadow effect on logo
+              style={{ filter: 'drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5))' }}
             />
-            <h4 className="text-2xl font-semibold text-center text-black">
-              Magizh Technologies
-            </h4>
+
           </div>
 
           {/* Certificate Title */}
-          <h1 
-            className="text-5xl font-bold text-center mb-4 text-black" 
+          <h1
+            className="text-5xl font-bold text-center mb-4 text-black"
             style={{ fontFamily: "'Times New Roman', serif" }}
           >
             Certificate of Course Completion
           </h1>
 
           {/* Subtitle */}
-          <p className="text-center text-lg italic mb-6 text-gray-600">
+          <p className="text-center text-2xl italic mb-6 text-gray-600">
             This certifies that
           </p>
 
           {/* Name Section */}
-          <h2 className="text-4xl font-bold text-center mb-6 text-black" style={{ fontFamily: 'Pacifico, cursive' }}>
+          <h2
+            className="text-4xl font-bold text-center mb-6 text-black"
+            style={{ fontFamily: 'Pacifico, cursive' }}
+          >
             {state.name}
           </h2>
 
           {/* Completion Text */}
-          <p className="text-center text-xl italic mb-6 text-gray-800">
+          <p className="text-center text-2xl italic mb-6 text-gray-800">
             has successfully completed the FULL STACK DEVELOPER program.
           </p>
 
           {/* Course Duration */}
-          <p className="text-center text-lg italic mb-6 text-gray-800">
+          <p className="text-center text-2xl italic mb-6 text-gray-800">
             Completed in 3 months
           </p>
 
           {/* Program Details */}
-          <div className="text-center text-lg text-gray-700 mb-6">
+          <div className="text-center text-2xl text-gray-700 mb-6 font-serif">
             <p>
-              This program covered front-end development using React and Tailwind CSS, 
+              This program covered front-end development using React and Tailwind CSS,
               as well as back-end technologies like FastAPI and SQLAlchemy.
             </p>
             <p>
@@ -108,39 +109,54 @@ const GeneratedCertificate = () => {
           </div>
 
           {/* Organization and Date Section */}
-          <div className="flex justify-between w-[1000px] mx-auto text-lg text-gray-600 mb-6">
+          <div className="flex justify-between w-[1100px] mx-auto text-lg text-gray-600 mb-6">
             <div className="text-left">
-              <p><strong>Organization:</strong> Magizh Technologies</p>
-              <p><strong>Issue Date:</strong> {state.issueDate}</p>
+              <p className="text-2xl"><strong>Organization:</strong> Magizh Technologies</p>
+              <p className="text-2xl"><strong>Issue Date:</strong> {state.issueDate}</p>
             </div>
 
             <div className="text-right">
-              <p><strong>Certificate ID:</strong> {state.certificateId}</p>
+              <p className="text-2xl"><strong>Certificate ID:</strong> {state.certificateId}</p>
             </div>
           </div>
 
           {/* Seal and Signature Section */}
-          <div className="flex justify-between w-[1000px] mx-auto text-lg text-gray-700 mt-6 border-t border-gray-300 pt-6">
+          <div className="flex justify-between w-[1100px] mx-auto text-xl text-gray-700 mt-6 border-t border-gray-300 pt-6">
             {/* Seal Section */}
             <div className="flex flex-col items-center text-center">
-              <p className="font-bold text-md text-gray-700 mb-5">Official Seal</p>
-              <div className="w-24 h-24 flex items-center justify-center border-solid border-4 border-gold bg-white -mt-3 rounded-full" style={{
-                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Shadow effect for seal
-                background: 'linear-gradient(45deg, rgba(255,215,0, 0.6), rgba(255,255,255, 0.3))', // Holographic effect
-              }}>
+              <p className="font-bold text-2xl text-gray-700 mb-5">Official Seal</p>
+              <div
+                className="w-32 h-32 flex items-center justify-center border-solid border-4 border-gold bg-white -mt-3 rounded-full" // Slightly increased size
+                style={{
+                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(45deg, rgba(255,215,0, 0.6), rgba(255,255,255, 0.3))',
+                }}
+              >
                 <img
                   src="/Magizh Technologies.png"
                   alt="Seal Logo"
-                  className="w-20 h-20 rounded-full"
+                  className="w-28 h-28 rounded-full" // Slightly increased size
                 />
               </div>
             </div>
 
             {/* Signature Section */}
-            <div className="text-right">
-              <p className="font-bold text-lg text-gray-700">Vijay P.</p>
-              <p>CEO, Magizh Technologies</p>
+            <div className="relative text-center" style={{ marginRight: '0px', textAlign: 'right' }}>
+              <img
+                src="/sig.png"
+                alt="Signature"
+                className="w-[210px] h-auto mb-2"  // Increased width for signature
+                style={{
+                  position: 'relative',
+                  top: '45px',
+                  marginBottom: '-20px',
+                  right: '-110px',
+                }}
+              />
+              <p className="font-bold text-2xl text-gray-700 mt-0">Vijay P.</p> {/* Increased font size */}
+              <p className="text-2xl text-gray-700">CEO, Magizh Technologies</p> {/* Increased font size */}
             </div>
+
           </div>
         </div>
       </div>
