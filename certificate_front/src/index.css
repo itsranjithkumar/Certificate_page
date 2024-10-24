@@ -1,7 +1,26 @@
-/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Engravers+Old+English&display=swap');
+
+/* Tailwind layers */
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+/* General body font (optional) */
+body {
+    font-family: 'Engravers Old English', serif; /* Ensure it applies globally if needed */
+}
+
+/* If you only want to apply to specific headings */
+h1 {
+  font-family: 'Engravers Old English', serif !important;
+}
 
 
 .certificate-box {
@@ -13,19 +32,3 @@
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
-
-@layer base {
-  :root {
-    --radius: 0.5rem;
-  }
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Engravers+Old+English&display=swap');
-
-body {
-    font-family: 'Engravers Old English', serif;
-}
-
-
-

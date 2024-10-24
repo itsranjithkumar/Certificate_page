@@ -35,11 +35,16 @@ const GeneratedLetter = () => {
 
   return (
     <div className="container mx-auto p-4">
-      {/* Letter Content with reduced padding */}
+      {/* Letter Content with an awesome border */}
       <div
         id="letter-content"
-        className="relative bg-gray-50 p-6 max-w-3xl mx-auto my-4 border-[8px] border-double border-yellow-500 rounded-xl shadow-lg"
-        style={{ pageBreakInside: 'avoid', fontSize: '0.9rem' }} // Smaller font to fit better
+        className="relative bg-gray-50 p-6 max-w-3xl mx-auto my-4 rounded-xl shadow-lg"
+        style={{
+          fontSize: '0.9rem',
+          border: '10px solid',
+          borderImage: 'linear-gradient(135deg, #ffcc00, #ff99cc, #66ccff, #ff6600) 1',
+          boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)', // Optional shadow for added depth
+        }}
       >
         {/* Logo and Header */}
         <div className="text-center mb-3">
@@ -47,9 +52,12 @@ const GeneratedLetter = () => {
             src="/logo.png"
             alt="Logo"
             className="mx-auto mb-2 rounded-full"
-            style={{ width: '100px', height: '110px' }} // Slightly smaller logo
+            style={{ width: '100px', height: '110px' }}
           />
-          <h1 className="text-2xl font-bold text-gray-800" style={{ fontFamily: 'Engravers Old English, serif' }}>
+          <h1 
+            className="text-2xl font-bold text-gray-800" 
+            style={{ fontFamily: "'Engravers Old English', serif" }} 
+          >
             Magizh Technologies
           </h1>
 
