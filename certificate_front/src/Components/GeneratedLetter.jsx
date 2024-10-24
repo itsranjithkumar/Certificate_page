@@ -64,13 +64,13 @@ const GeneratedLetter = () => {
             />
             <h1
               className="text-2xl font-bold text-gray-800"
-              style={{ fontFamily: "'Engravers Old English', serif" }}
+              style={{ fontFamily: "'UnifrakturMaguntia', cursive", fontSize: '2.5rem' }} // Updated font
             >
               Magizh Technologies
             </h1>
 
-            {/* Black Horizontal Line */}
-            <div className="border-t-2 border-black my-2 w-full"></div>
+            {/* Black Horizontal Line with More Margin */}
+            <div className="border-t-2 border-black my-6 w-full"></div> {/* Increased margin */}
           </div>
 
           {/* Date Right-Aligned */}
@@ -80,7 +80,7 @@ const GeneratedLetter = () => {
 
           {/* Letter Heading */}
           <div className="text-center mb-6">
-            <h2 className="text-xl font-semibold text-gray-700" style={{ fontFamily: 'Cursive, sans-serif' }}>
+            <h2 className="text-xl font-semibold text-gray-700" style={{ fontFamily: "'UnifrakturMaguntia', cursive" }}>
               Internship Completion Letter
             </h2>
           </div>
