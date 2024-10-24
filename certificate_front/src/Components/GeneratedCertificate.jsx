@@ -28,20 +28,25 @@ const GeneratedCertificate = () => {
           border: '10px double #D4AF37', // Elegant double gold borders
           padding: '40px',
           position: 'relative',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Add shadow to the container
         }}
       >
-        {/* Inner Thin Border */}
+        {/* Watermark Background */}
         <div
           style={{
             position: 'absolute',
-            top: '20px',
-            left: '20px',
-            right: '20px',
-            bottom: '20px',
-            border: '2px solid #D4AF37', // Thin inner border for sophistication
-            borderRadius: '10px',
+            opacity: 0.1,
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
           }}
-        ></div>
+        >
+          <img
+            src="/logo.png"
+            alt="Watermark Logo"
+            className="w-[300px] h-[300px]"
+          />
+        </div>
 
         {/* Certificate Content */}
         <div className="relative z-10">
@@ -50,7 +55,8 @@ const GeneratedCertificate = () => {
             <img
               src="/logo.png"
               alt="Organization Logo"
-              className="w-17 h-20 mb-5" // Adjusted size for a more balanced look
+              className="w-20 h-30 mb-8"
+              style={{ filter: 'drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5))' }} // Shadow effect on logo
             />
             <h4 className="text-2xl font-semibold text-center text-black">
               Magizh Technologies
@@ -78,6 +84,11 @@ const GeneratedCertificate = () => {
           {/* Completion Text */}
           <p className="text-center text-xl italic mb-6 text-gray-800">
             has successfully completed the FULL STACK DEVELOPER program.
+          </p>
+
+          {/* Course Duration */}
+          <p className="text-center text-lg italic mb-6 text-gray-800">
+            Completed in 3 months
           </p>
 
           {/* Program Details */}
@@ -113,7 +124,10 @@ const GeneratedCertificate = () => {
             {/* Seal Section */}
             <div className="flex flex-col items-center text-center">
               <p className="font-bold text-md text-gray-700 mb-5">Official Seal</p>
-              <div className="w-24 h-24 flex items-center justify-center border-solid border-4 border-gold bg-white -mt-3 rounded-full">
+              <div className="w-24 h-24 flex items-center justify-center border-solid border-4 border-gold bg-white -mt-3 rounded-full" style={{
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Shadow effect for seal
+                background: 'linear-gradient(45deg, rgba(255,215,0, 0.6), rgba(255,255,255, 0.3))', // Holographic effect
+              }}>
                 <img
                   src="/Magizh Technologies.png"
                   alt="Seal Logo"
