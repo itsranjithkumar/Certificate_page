@@ -33,20 +33,22 @@ const GeneratedCertificate = () => {
       >
         {/* Watermark Background */}
         <div
-          style={{
-            position: 'absolute',
-            opacity: 0.1,
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          <img
-            src="/logo.png"
-            alt="Watermark Logo"
-            className="w-[300px] h-[300px]"
-          />
-        </div>
+  style={{
+    position: 'absolute',
+    opacity: 0.2, // Adjusted opacity to make the watermark slightly brighter
+    top: '50%',
+    left: '52%',  // Shifted slightly to the right by increasing 'left' to 55%
+    transform: 'translate(-50%, -50%)',
+  }}
+>
+  <img
+    src="/logo.png"
+    alt="Watermark Logo"
+    className="w-[300px] h-[300px]"
+  />
+</div>
+
+
 
         {/* Certificate Content */}
         <div className="relative z-10">
@@ -122,42 +124,43 @@ const GeneratedCertificate = () => {
 
           {/* Seal and Signature Section */}
           <div className="flex justify-between w-[1100px] mx-auto text-xl text-gray-700 mt-6 border-t border-gray-300 pt-6">
-            {/* Seal Section */}
-            <div className="flex flex-col items-center text-center">
-              <p className="font-bold text-2xl text-gray-700 mb-5">Official Seal</p>
-              <div
-                className="w-32 h-32 flex items-center justify-center border-solid border-4 border-gold bg-white -mt-3 rounded-full" // Slightly increased size
-                style={{
-                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-                  background: 'linear-gradient(45deg, rgba(255,215,0, 0.6), rgba(255,255,255, 0.3))',
-                }}
-              >
-                <img
-                  src="/Magizh Technologies.png"
-                  alt="Seal Logo"
-                  className="w-28 h-28 rounded-full" // Slightly increased size
-                />
-              </div>
-            </div>
+  {/* Seal Section */}
+  <div className="flex flex-col items-center text-center">
+    <p className="font-bold text-2xl text-gray-700 mb-0">Official Seal</p>
+    <div
+      className="w-32 h-32 flex items-center justify-center mt-4 rounded-full"
+      style={{
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Retained box shadow for a nice effect
+      }}
+    >
+      <img
+        src="/Magizh Technologies.png"
+        alt="Seal Logo"
+        className="w-28 h-28 rounded-full" // Slightly increased size
+      />
+    </div>
+  </div>
 
-            {/* Signature Section */}
-            <div className="relative text-center" style={{ marginRight: '0px', textAlign: 'right' }}>
-              <img
-                src="/sig.png"
-                alt="Signature"
-                className="w-[210px] h-auto mb-2"  // Increased width for signature
-                style={{
-                  position: 'relative',
-                  top: '45px',
-                  marginBottom: '-20px',
-                  right: '-110px',
-                }}
-              />
-              <p className="font-bold text-2xl text-gray-700 mt-0">Vijay P.</p> {/* Increased font size */}
-              <p className="text-2xl text-gray-700">CEO, Magizh Technologies</p> {/* Increased font size */}
-            </div>
+  {/* Signature Section */}
+  <div className="relative text-center" style={{ marginRight: '0px', textAlign: 'right' }}>
+    <img
+      src="/sig.png"
+      alt="Signature"
+      className="w-[170px] h-auto mb-2"
+      style={{
+        position: 'relative',
+        top: '10px',
+        marginBottom: '-20px',
+        right: '-130px',
+      }}
+    />
+    <p className="font-bold text-2xl text-gray-700" style={{ marginBottom: '-10px', transform: 'translateY(-20px)' }}>
+      Vijay P.
+    </p>
+    <p className="text-2xl text-gray-700">CEO, Magizh Technologies</p>
+  </div>
+</div>
 
-          </div>
         </div>
       </div>
 
