@@ -87,6 +87,27 @@ export default function DocumentGenerator() {
             text-align: left;
             font-weight: bold;
             font-size: 12pt;
+            margin-right: 20px;
+          }
+          .center-logo {
+            text-align: center;
+            margin-top: 20px;
+            margin-left: -20px; /* Adjust the left margin to shift the logo left */
+          }
+          .center-logo img {
+            max-width: 100px;
+            height: auto;
+            background-color: transparent;
+            padding: 0;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            object-fit: contain;
+            margin-top: 10px;
+          }
+          .logo-container img {
+            max-width: 100px;
+            height: auto;
+            object-fit: contain;
+            margin-left: 20px;
           }
           .contact-info {
             margin-top: 20px;
@@ -131,9 +152,6 @@ export default function DocumentGenerator() {
             <div class="thank-you">
               <p><strong>Thank You,</strong></p>
             </div>
-            <div class="logo-container">
-              <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
-            </div>
           </div>
           <div class="footer">
             <div class="signature-section">
@@ -141,6 +159,11 @@ export default function DocumentGenerator() {
                 <p>Vijay.P</p>
                 <p>CEO, MagizhTech</p>
               </div>
+              
+              <div class="center-logo">
+                <img src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
+              </div>
+              
               <div class="logo-container">
                 <img src="/msme.png" alt="MSME Logo" />
               </div>
@@ -148,11 +171,10 @@ export default function DocumentGenerator() {
           </div>
           <div class="contact-info">
             <div class="contact-left">
-<p>
- <strong> North Rangasamudram,</strong><br />
-  <strong>Sathyamangalam-638401</strong><br />
-</p>
-
+              <p>
+                <strong>North Rangasamudram,</strong><br />
+                <strong>Sathyamangalam-638401</strong><br />
+              </p>
               <p class="address-space"><strong>www.magizhtechnologies.com</strong></p>
             </div>
             <div class="contact-right">
