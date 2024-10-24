@@ -62,7 +62,7 @@ const GeneratedCertificate = () => {
             className="text-5xl font-bold text-center mb-4 text-black" 
             style={{ fontFamily: "'Times New Roman', serif" }}
           >
-            Certificate of Completion
+            Certificate of Course Completion
           </h1>
 
           {/* Subtitle */}
