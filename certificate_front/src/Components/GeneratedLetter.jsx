@@ -35,50 +35,59 @@ const GeneratedLetter = () => {
 
   return (
     <div className="container mx-auto p-4">
-      {/* Letter Content with an awesome border */}
+      {/* Letter Content with a reduced gradient border effect */}
       <div
         id="letter-content"
-        className="relative bg-gray-50 p-6 max-w-3xl mx-auto my-4 rounded-xl shadow-lg"
+        className="relative p-4 max-w-3xl mx-auto my-4 rounded-xl shadow-lg"
         style={{
           fontSize: '0.9rem',
-          border: '10px solid',
-          borderImage: 'linear-gradient(135deg, #ffcc00, #ff99cc, #66ccff, #ff6600) 1',
-          boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)', // Optional shadow for added depth
+          padding: '1rem', // Reduced padding for the gradient border effect
+          background: 'linear-gradient(135deg, #ffcc00, #ff99cc, #66ccff, #ff6600)', // Gradient background
+          boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
         }}
       >
-        {/* Logo and Header */}
-        <div className="text-center mb-3">
-          <img
-            src="/logo.png"
-            alt="Logo"
-            className="mx-auto mb-2 rounded-full"
-            style={{ width: '100px', height: '110px' }}
-          />
-          <h1 
-            className="text-2xl font-bold text-gray-800" 
-            style={{ fontFamily: "'Engravers Old English', serif" }} 
-          >
-            Magizh Technologies
-          </h1>
+        {/* Inner content box with white background to mimic border effect */}
+        <div
+          style={{
+            backgroundColor: '#ffffff',
+            padding: '1.25rem', // Padding inside the content box
+            borderRadius: '10px', // Keep the inner box rounded
+          }}
+        >
+          {/* Logo and Header */}
+          <div className="text-center mb-3">
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="mx-auto mb-2 rounded-full"
+              style={{ width: '100px', height: '110px' }}
+            />
+            <h1
+              className="text-2xl font-bold text-gray-800"
+              style={{ fontFamily: "'Engravers Old English', serif" }}
+            >
+              Magizh Technologies
+            </h1>
 
-          {/* Black Horizontal Line */}
-          <div className="border-t-2 border-black my-2 w-full"></div>
+            {/* Black Horizontal Line */}
+            <div className="border-t-2 border-black my-2 w-full"></div>
+          </div>
+
+          {/* Date Right-Aligned */}
+          <div className="text-right mb-4 text-lg text-gray-600">
+            <p><strong>Date:</strong> {new Date().toLocaleDateString()}</p>
+          </div>
+
+          {/* Letter Heading */}
+          <div className="text-center mb-6">
+            <h2 className="text-xl font-semibold text-gray-700" style={{ fontFamily: 'Cursive, sans-serif' }}>
+              Internship Completion Letter
+            </h2>
+          </div>
+
+          {/* Letter Body */}
+          <div className="text-md text-gray-800 mb-4 leading-relaxed" dangerouslySetInnerHTML={{ __html: letterText }} />
         </div>
-
-        {/* Date Right-Aligned */}
-        <div className="text-right mb-4 text-lg text-gray-600">
-          <p><strong>Date:</strong> {new Date().toLocaleDateString()}</p>
-        </div>
-
-        {/* Letter Heading */}
-        <div className="text-center mb-6">
-          <h2 className="text-xl font-semibold text-gray-700" style={{ fontFamily: 'Cursive, sans-serif' }}>
-            Internship Completion Letter
-          </h2>
-        </div>
-
-        {/* Letter Body */}
-        <div className="text-md text-gray-800 mb-4 leading-relaxed" dangerouslySetInnerHTML={{ __html: letterText }} />
       </div>
 
       {/* Button to Download the Letter */}
