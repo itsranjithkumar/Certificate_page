@@ -131,17 +131,7 @@ const GeneratedCertificate = () => {
                   filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))', // Adds a subtle shadow around the seal
                 }}
               />
-              <img
-                src="/msme.png" // Updated to msme.png
-                alt="MSME Logo"
-                className="w-36 h-36"
-                style={{
-                  position: 'absolute',
-                  top: '30px',  // Adjust position if necessary
-                  right: '25px',  // Adjust position if necessary
-                  filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))',
-                }}
-              />
+
               <img
                 src="http://127.0.0.1:8000/generate_qr?id=jgfhgfj"
                 alt="QR Code"
