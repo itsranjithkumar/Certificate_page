@@ -123,7 +123,6 @@ const GeneratedCertificate = () => {
           <div className="flex justify-between w-[1100px] mx-auto text-xl text-gray-700 mt-4 border-t border-gray-300 pt-4">
             {/* Seal Section */}
             <div className="flex flex-col items-center text-center">
-              <p className="font-bold text-2xl text-gray-700 mb-0">Official Seal</p>
               <div
                 className="w-32 h-32 flex items-center justify-center mt-2 rounded-full"
                 style={{
@@ -163,7 +162,7 @@ const GeneratedCertificate = () => {
             <p className="text-xl text-gray-600">
               For certificate verification, please visit:
               <a
-                href="https://www.magizhtechnologies.com"
+                href="https://www.magizhtechnologies.com/certificates/verify"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline"
