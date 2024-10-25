@@ -35,9 +35,9 @@ const GeneratedCertificate = () => {
         <div
           style={{
             position: 'absolute',
-            opacity: 0.2, // Adjusted opacity to make the watermark slightly brighter
+            opacity: 0.2,
             top: '50%',
-            left: '52%',  // Shifted slightly to the right
+            left: '52%',
             transform: 'translate(-50%, -50%)',
           }}
         >
@@ -123,18 +123,26 @@ const GeneratedCertificate = () => {
           <div className="flex justify-between w-[1100px] mx-auto text-xl text-gray-700 mt-4 border-t border-gray-300 pt-4">
             {/* Seal Section */}
             <div className="flex flex-col items-center text-center">
-              <div
-                className="w-32 h-32 flex items-center justify-center mt-2 rounded-full"
+              <img
+                src="/Magizh Technologies.png"
+                alt="Seal Logo"
+                className="w-36 h-36"
                 style={{
-                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Retained box shadow for a nice effect
+                  filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))', // Adds a subtle shadow around the seal
                 }}
-              >
-                <img
-                  src="/Magizh Technologies.png"
-                  alt="Seal Logo"
-                  className="w-28 h-28 rounded-full"
-                />
-              </div>
+              />
+              <img
+                src="http://127.0.0.1:8000/generate_qr?id=jgfhgfj"
+                alt="QR Code"
+                className="w-36 h-36"
+                style={{
+                  position: 'absolute',
+                  top: '40px',  // Moved slightly down
+                  right: '50px',  // Moved slightly left
+                  filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))',
+                }}
+              />
+              
             </div>
 
             {/* Signature Section */}
