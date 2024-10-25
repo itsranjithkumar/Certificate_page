@@ -62,16 +62,16 @@ export default function DocumentGenerator() {
       font-size: 14pt;
     }
     .qr-code {
-      position: absolute; /* Position the QR code absolutely */
-      top: 20mm; /* Adjust to your desired distance from the top */
-      right: 20mm; /* Adjust to your desired distance from the right */
+      position: absolute;
+      top: 20mm;
+      right: 20mm;
       text-align: center;
       margin-top: 20px;
     }
     .qr-code img {
-      width: 128px; /* Set width for the QR code */
-      height: auto; /* Maintain aspect ratio */
-      margin-top: 20px; /* Add some space above the QR code */
+      width: 128px;
+      height: auto;
+      margin-top: 20px;
     }
     .signature-section {
       display: flex;
@@ -88,15 +88,15 @@ export default function DocumentGenerator() {
     .center-logo {
       text-align: center;
       margin-top: 20px;
-      margin-left: -60px; /* Move logo slightly more to the left */
+      margin-left: -60px;
     }
     .center-logo img {
-      max-width: 120px; /* Increased logo size */
-      height: auto; /* Set height to auto to maintain aspect ratio */
+      max-width: 120px;
+      height: auto;
       background-color: transparent;
       padding: 0;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); /* Add shadow to logo */
-      object-fit: contain; /* Ensure the logo scales correctly */
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+      object-fit: contain;
     }
     .logo-container {
       display: flex;
@@ -109,8 +109,8 @@ export default function DocumentGenerator() {
       height: auto;
       background-color: transparent;
       padding: 0;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); /* Add shadow to logo */
-      object-fit: contain; /* Ensure the logo scales correctly */
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+      object-fit: contain;
     }
     .contact-info {
       margin-top: 20px;
@@ -159,6 +159,11 @@ export default function DocumentGenerator() {
     <div class="footer">
       <div class="signature-section">
         <div class="signature">
+          <img 
+            src="/sig.png" 
+            alt="Signature" 
+            style="width: 180px; height: auto; margin-left: -35px; margin-bottom: -40px;" 
+          />
           <p>Vijay.P</p>
           <p>CEO, MagizhTech</p>
         </div>
@@ -169,8 +174,8 @@ export default function DocumentGenerator() {
             alt="Magizh Technologies Logo" 
             className="w-36 h-36" 
             style={{
-              filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))', // Adds a subtle shadow around the logo
-              backgroundColor: 'transparent', // Ensure the background is transparent
+              filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))',
+              backgroundColor: 'transparent',
             }} 
           />
         </div>
@@ -181,8 +186,8 @@ export default function DocumentGenerator() {
             alt="MSME Logo" 
             className="w-36 h-36" 
             style={{
-              filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))', // Adds a subtle shadow around the logo
-              backgroundColor: 'transparent', // Ensure the background is transparent
+              filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))',
+              backgroundColor: 'transparent',
             }} 
           />
         </div>
@@ -243,10 +248,10 @@ export default function DocumentGenerator() {
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="content" style={{ fontSize: '1rem' }}>Content</Label>
-              <Textarea id="content" name="content" value={formData.content} onChange={handleInputChange} placeholder="Content" style={{ fontSize: '1rem', padding: '8px' }} />
+              <Textarea id="content" name="content" value={formData.content} onChange={handleInputChange} placeholder="Additional Content" style={{ fontSize: '1rem', padding: '8px' }} />
             </div>
+            <Button type="submit" style={{ marginTop: '20px', fontSize: '1rem', padding: '8px' }}>Generate Document</Button>
           </div>
-          <Button type="submit" className="mt-4" style={{ fontSize: '1rem' }}>Generate Document</Button>
         </form>
       </CardContent>
     </Card>
