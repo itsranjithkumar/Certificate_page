@@ -61,20 +61,18 @@ export default function DocumentGenerator() {
             margin-top: 10px;
             font-size: 14pt;
           }
-          .logo-container {
-            display: flex;
-            justify-content: center;
+          .center-logo {
+            text-align: center;
             margin-top: 20px;
-            margin-bottom: 20px;
+            margin-left: -30px; /* Move logo slightly more to the left */
           }
-          .logo-container img {
-            max-width: 90px;
-            height: auto;
+          .center-logo img {
+            max-width: 110px; /* Increased logo size */
+            height: auto; /* Set height to auto to maintain aspect ratio */
             background-color: transparent;
             padding: 0;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            object-fit: contain;
-            border-radius: 50%; /* Make the logo round */
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); /* Add shadow to logo */
+            object-fit: contain; /* Ensure the logo scales correctly */
           }
           .signature-section {
             display: flex;
@@ -88,19 +86,19 @@ export default function DocumentGenerator() {
             font-size: 12pt;
             margin-right: 20px;
           }
-          .center-logo {
-            text-align: center;
+          .logo-container {
+            display: flex;
+            justify-content: center;
             margin-top: 20px;
-            margin-left: -30px; /* Move logo slightly more to the left */
+            margin-bottom: 20px;
           }
-          .center-logo img {
-            max-width: 110px; /* Increased logo size */
-            height: 110px; /* Set a fixed height to maintain the round shape */
+          .logo-container img {
+            max-width: 90px;
+            height: auto;
             background-color: transparent;
             padding: 0;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            object-fit: contain;
-            border-radius: 50%; /* Make the logo round */
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); /* Add shadow to logo */
+            object-fit: contain; /* Ensure the logo scales correctly */
           }
           .contact-info {
             margin-top: 20px;
@@ -124,13 +122,6 @@ export default function DocumentGenerator() {
           p {
             margin: 0 0 5px;
             font-size: 12pt;
-          }
-          .magizh-logo {
-            border-radius: 50%; /* Make the logo round */
-            margin-left: -30px; /* Move logo slightly to the left */
-            max-width: 110px; /* Increased logo size */
-            height: 110px; /* Set a fixed height to maintain the round shape */
-            object-fit: cover; /* Ensure the logo scales correctly within the container */
           }
         </style>
       </head>
@@ -161,11 +152,27 @@ export default function DocumentGenerator() {
               </div>
               
               <div class="center-logo">
-                <img className="magizh-logo" src="/Magizh Technologies.png" alt="Magizh Technologies Logo" />
+                <img 
+                  src="/Magizh Technologies.png" 
+                  alt="Magizh Technologies Logo" 
+                  className="w-36 h-36" 
+                  style={{
+                    filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))', // Adds a subtle shadow around the logo
+                    backgroundColor: 'transparent', // Ensure the background is transparent
+                  }} 
+                />
               </div>
               
               <div class="logo-container">
-                <img src="/msme.png" alt="MSME Logo" />
+                <img 
+                  src="/msme.png" 
+                  alt="MSME Logo" 
+                  className="w-36 h-36" 
+                  style={{
+                    filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))', // Adds a subtle shadow around the logo
+                    backgroundColor: 'transparent', // Ensure the background is transparent
+                  }} 
+                />
               </div>
             </div>
           </div>
@@ -181,7 +188,6 @@ export default function DocumentGenerator() {
               <p><strong>info@magizhtechnologies.com</strong></p>
               <p class="address-space"><strong>www.magizhtechnologies.com</strong></p>
               <p><strong>+91 9342209140</strong></p>
-
             </div>
           </div>
         </div>
@@ -224,7 +230,7 @@ export default function DocumentGenerator() {
               <Textarea id="content" name="content" value={formData.content} onChange={handleInputChange} placeholder="Additional Content" style={{ fontSize: '1rem', padding: '8px' }} />
             </div>
           </div>
-          <Button type="submit" variant="outline" style={{ marginTop: '20px' }}>Generate Document</Button>
+          <Button type="submit" className="mt-4">Generate Document</Button>
         </form>
       </CardContent>
     </Card>
