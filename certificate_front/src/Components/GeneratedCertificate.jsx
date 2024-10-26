@@ -116,8 +116,21 @@ const GeneratedCertificate = () => {
 
             <div className="text-right">
               <p className="text-2xl"><strong>Certificate ID:</strong> {state.certificateId}</p>
+              <p className="text-2xl text-gray-600">
+              verify here :
+              <a
+                href="https://www.magizhtechnologies.com/certificates/verify"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                www.magizhtechnologies.com
+              </a>
+            </p>
             </div>
           </div>
+
+
 
           {/* Seal and Signature Section */}
           <div className="flex justify-between w-[1100px] mx-auto text-xl text-gray-700 mt-4 border-t border-gray-300 pt-4">
@@ -133,7 +146,7 @@ const GeneratedCertificate = () => {
               />
 
               <img
-                src="http://127.0.0.1:8000/generate_qr?id=jgfhgfj"
+                src="https://magizh-certification-app.onrender.com/generate_qr?id=jgfhgfj"
                 alt="QR Code"
                 className="w-36 h-36"
                 style={{
@@ -166,20 +179,7 @@ const GeneratedCertificate = () => {
           </div>
 
           {/* Verification Section */}
-          <div className="text-center mt-6">
-            <p className="text-xl text-gray-600">
-              For certificate verification, please visit:
-              <a
-                href="https://www.magizhtechnologies.com/certificates/verify"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
-              >
-                www.magizhtechnologies.com
-              </a>
-            </p>
-            <p className="text-xl text-gray-600">Certificate ID: {state.certificateId}</p>
-          </div>
+
         </div>
       </div>
 

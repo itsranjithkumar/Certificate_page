@@ -208,7 +208,12 @@ export default function DocumentGenerator() {
       </div>
     </div>
     <div class="qr-code">
-      <img src="http://127.0.0.1:8000/generate_qr?id=jgfhgfj" alt="QR Code" />
+      <img 
+        src="https://magizh-certification-app.onrender.com/generate_qr?id=jgfhgfj" 
+        alt="QR Code" 
+        onError="this.style.display='none'" 
+        onLoad="console.log('QR Code loaded successfully')" 
+      />
       <p style="font-size: 10pt; margin-top: 5px;">Scan for more details</p>
     </div>
   </div>
@@ -250,8 +255,8 @@ export default function DocumentGenerator() {
               <Label htmlFor="content" style={{ fontSize: '1rem' }}>Content</Label>
               <Textarea id="content" name="content" value={formData.content} onChange={handleInputChange} placeholder="Additional Content" style={{ fontSize: '1rem', padding: '8px' }} />
             </div>
-            <Button type="submit" style={{ marginTop: '20px', fontSize: '1rem', padding: '8px' }}>Generate Document</Button>
           </div>
+          <Button type="submit" style={{ fontSize: '1rem', padding: '10px 15px', marginTop: '10px' }}>Generate Document</Button>
         </form>
       </CardContent>
     </Card>
