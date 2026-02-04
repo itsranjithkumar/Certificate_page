@@ -41,6 +41,21 @@ const CertificatePage = () => {
 
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl">
           <div className="p-8 sm:p-10">
+            <div className="flex justify-center space-x-4 mb-8">
+              <button
+                onClick={() => navigate('/offer-letter/form')}
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Create Offer Letter
+              </button>
+              <button
+                onClick={() => navigate('/experience-certificate/form')}
+                className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+              >
+                Create Experience Certificate
+              </button>
+            </div>
+            
             <div className="space-y-6">
               <div className="space-y-1">
                 <label className="block text-sm font-medium text-gray-700">
