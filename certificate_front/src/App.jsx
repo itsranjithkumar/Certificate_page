@@ -1,9 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CertificatePage from './Components/CertificatePage';
-import GeneratedCertificate from './Components/GeneratedCertificate';
-import DocumentGenerator from './Components/documentgenerator'; // Correctly import the file
-import GeneratedLetter from './Components/GeneratedLetter'; // Import the GeneratedLetter component
+import CertificatePage from './Components/CertificatePage.jsx';
+import GeneratedCertificate from './Components/GeneratedCertificate.jsx';
+import DocumentGenerator from './Components/documentgenerator.jsx';
+import GeneratedLetter from './Components/GeneratedLetter.jsx';
+import NewExperienceCertificate from './Components/NewExperienceCertificate.jsx';
+import ViewExperienceCertificate from './Components/ViewExperienceCertificate.tsx';
 import './App.css';
 import './index.css';
 
@@ -12,9 +14,14 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<CertificatePage />} />
-        <Route path="/:name-certificate" element={<GeneratedCertificate />} />
-        <Route path="/document-generator" element={<DocumentGenerator />} /> {/* Add the route */}
-        <Route path="/generated-letter" element={<GeneratedLetter />} /> {/* Add this route */}
+        <Route path="/generate-certificate" element={<GeneratedCertificate />} />
+        <Route path="/document-generator" element={<DocumentGenerator />} />
+        <Route path="/generated-letter" element={<GeneratedLetter />} />
+        
+        {/* New Experience Certificate */}
+        <Route path="/new-experience-certificate" element={<NewExperienceCertificate />} />
+        <Route path="/experience-certificate/form" element={<NewExperienceCertificate />} />
+        <Route path="/view-experience-certificate" element={<ViewExperienceCertificate />} />
       </Routes>
     </Router>
   );

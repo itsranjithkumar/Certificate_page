@@ -41,6 +41,7 @@ export default function DocumentGenerator() {
       line-height: 1.4;
       margin: 0;
       padding: 0;
+      position: relative; /* Enable positioning for absolute children */
     }
     .letter {
       width: 100%;
@@ -63,15 +64,14 @@ export default function DocumentGenerator() {
     }
     .qr-code {
       position: absolute;
-      top: 20mm;
-      right: 20mm;
+      top: 10mm; /* Adjust this value to move it up or down */
+      right: 10mm; /* Adjust this value for horizontal positioning */
       text-align: center;
-      margin-top: 20px;
     }
     .qr-code img {
       width: 128px;
       height: auto;
-      margin-top: 20px;
+      margin-top: 10px;
     }
     .signature-section {
       display: flex;
@@ -253,10 +253,10 @@ export default function DocumentGenerator() {
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="content" style={{ fontSize: '1rem' }}>Content</Label>
-              <Textarea id="content" name="content" value={formData.content} onChange={handleInputChange} placeholder="Additional Content" style={{ fontSize: '1rem', padding: '8px' }} />
+              <Textarea id="content" name="content" value={formData.content} onChange={handleInputChange} placeholder="Enter additional content" rows={4} style={{ fontSize: '1rem', padding: '8px' }} />
             </div>
           </div>
-          <Button type="submit" style={{ fontSize: '1rem', padding: '10px 15px', marginTop: '10px' }}>Generate Document</Button>
+          <Button type="submit" className="mt-4">Generate Document</Button>
         </form>
       </CardContent>
     </Card>
