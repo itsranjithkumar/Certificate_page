@@ -8,10 +8,12 @@ import NewExperienceCertificate from './Components/NewExperienceCertificate.jsx'
 import ViewExperienceCertificate from './Components/ViewExperienceCertificate.tsx';
 import OfferLetterPreview from './Components/OfferLetterPreview';
 import NewOfferLetterForm from './Components/NewOfferLetterForm';
+import { RelievingLetterPreview } from './Components/RelievingLetterPreview';
+import { NewRelievingLetterForm } from './Components/NewRelievingLetterForm';
 import './App.css';
 import './index.css';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
@@ -29,10 +31,16 @@ function App() {
         <Route path="/offer-letter" element={<Navigate to="/offer-letter/form" replace />} />
         <Route path="/offer-letter/form" element={<NewOfferLetterForm />} />
         <Route 
-          path="/preview" 
-          element={
-            <OfferLetterPreview />
-          } 
+          path="/offer-letter/preview" 
+          element={<OfferLetterPreview />} 
+        />
+        
+        {/* Relieving Letter Routes */}
+        <Route path="/relieving-letter" element={<Navigate to="/relieving-letter/form" replace />} />
+        <Route path="/relieving-letter/form" element={<NewRelievingLetterForm />} />
+        <Route 
+          path="/relieving-letter/preview" 
+          element={<RelievingLetterPreview />} 
         />
       </Routes>
     </Router>
