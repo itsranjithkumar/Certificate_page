@@ -99,6 +99,27 @@ export function RelievingLetterPreview() {
               <Edit2 className="w-4 h-4" />
               Edit
             </Button>
+            <Button
+              onClick={() => {
+                navigate('/new-experience-certificate', { 
+                  state: { 
+                    employeeName: data.employeeName,
+                    employeeId: data.employeeId,
+                    designation: data.designation,
+                    department: data.department,
+                    startDate: data.startDate,
+                    endDate: data.endDate,
+                    companyName: data.companyName,
+                    companyAddress: data.companyAddress
+                  } 
+                });
+              }}
+              variant="outline"
+              className="flex items-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-100 border-blue-200"
+            >
+              <FileText className="w-4 h-4" />
+              View Experience Certificate
+            </Button>
           </div>
         </div>
       </div>

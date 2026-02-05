@@ -98,19 +98,19 @@ const ViewExperienceCertificate = () => {
         {/* Certificate Container */}
         <div 
           ref={certificateRef}
-          className="certificate-box bg-white shadow-2xl rounded-2xl overflow-hidden p-12 md:p-16 max-w-5xl mx-auto relative"
+          className="bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-black p-10"
           style={{
-            background: 'linear-gradient(135deg, #ffffff 0%, #fafbfc 100%)',
-            minHeight: '29.7cm',
-            position: 'relative',
-            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.08)'
+            background: 'linear-gradient(145deg, #ffffff 0%, #f9fafb 100%)',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+            margin: '2rem',
+            position: 'relative'
           }}
         >
           {/* Decorative accent lines */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+          <div className="absolute top-4 left-4 right-4 bottom-4 border-2 border-black rounded-lg"></div>
           
           {/* Certificate Header */}
-          <div className="text-center mb-12 relative">
+          <div className="text-center mb-12 relative z-10">
             {/* Company Logo */}
             <div className="flex justify-center mb-6">
               <img 
