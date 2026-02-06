@@ -1,11 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const CertificatePage = () => {
+  const location = useLocation();
   const [name, setName] = useState("");
   const [issueDate, setIssueDate] = useState("");
   const [certificateId, setCertificateId] = useState(""); // Added certificate ID
-  const [selectedCourse, setSelectedCourse] = useState(""); // Renamed to selectedCourse
+  const [selectedCourse, setSelectedCourse] = useState(
+    location.state?.type === 'internship' 
+      ? 'FULL STACK DEVELOPER (Internship Completed)' 
+      : 'FULL STACK DEVELOPER (Course Completed)'
+  ); // Renamed to selectedCourse
   
   const navigate = useNavigate();
 
