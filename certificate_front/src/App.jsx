@@ -51,6 +51,19 @@ const AppRoutes = () => {
         </ProtectedRoute>
       } />
       
+      {/* Offer Letter Routes */}
+      <Route path="/offer-letter/form" element={
+        <ProtectedRoute>
+          <NewOfferLetterForm />
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/preview" element={
+        <ProtectedRoute>
+          <OfferLetterPreview />
+        </ProtectedRoute>
+      } />
+      
       {/* Offer Letter */}
       <Route path="/offer-letter/form" element={
         <ProtectedRoute>
