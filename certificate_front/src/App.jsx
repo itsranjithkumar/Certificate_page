@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AuthProvider, useAuth, ProtectedRoute } from './contexts/AuthContext';
 import HomePage from './Components/HomePage';
 import CertificatePage from './Components/CertificatePage.jsx';
 import GeneratedCertificate from './Components/GeneratedCertificate.jsx';
@@ -11,34 +12,88 @@ import OfferLetterPreview from './Components/OfferLetterPreview';
 import NewOfferLetterForm from './Components/NewOfferLetterForm';
 import { RelievingLetterPreview } from './Components/RelievingLetterPreview';
 import { NewRelievingLetterForm } from './Components/NewRelievingLetterForm';
+import LoginPage from './Components/LoginPage';
 import './App.css';
 import './index.css';
+
+const AppRoutes = () => {
+  const { isAuthenticated } = useAuth();
+
+  return (
+    <Routes>
+      <Route path="/login" element={isAuthenticated ? <Navigate to="/" replace /> : <LoginPage />} />
+      
+      <Route path="/" element={<HomePage />} />
+      
+      {/* Protected Routes */}
+      <Route path="/certificate" element={
+        <ProtectedRoute>
+          <CertificatePage />
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/generate-certificate" element={
+        <ProtectedRoute>
+          <GeneratedCertificate />
+        </ProtectedRoute>
+      } />
+      
+      {/* Experience Certificate */}
+      <Route path="/experience-certificate/form" element={
+        <ProtectedRoute>
+          <NewExperienceCertificate />
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/view-experience-certificate" element={
+        <ProtectedRoute>
+          <ViewExperienceCertificate />
+        </ProtectedRoute>
+      } />
+      
+      {/* Offer Letter */}
+      <Route path="/offer-letter/form" element={
+        <ProtectedRoute>
+          <NewOfferLetterForm />
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/offer-letter/preview" element={
+        <ProtectedRoute>
+          <OfferLetterPreview />
+        </ProtectedRoute>
+      } />
+      
+      {/* Relieving Letter */}
+      <Route path="/relieving-letter/form" element={
+        <ProtectedRoute>
+          <NewRelievingLetterForm />
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/relieving-letter/preview" element={
+        <ProtectedRoute>
+          <RelievingLetterPreview />
+        </ProtectedRoute>
+      } />
+      
+      {/* Redirects for backward compatibility */}
+      <Route path="/new-experience-certificate" element={<Navigate to="/experience-certificate/form" replace />} />
+      <Route path="/offer-letter" element={<Navigate to="/offer-letter/form" replace />} />
+      <Route path="/relieving-letter" element={<Navigate to="/relieving-letter/form" replace />} />
+      
+      {/* Catch all other routes */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+};
 
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/certificate" element={<CertificatePage />} />
-        <Route path="/generate-certificate" element={<GeneratedCertificate />} />
-        
-        {/* Experience Certificate */}
-        <Route path="/experience-certificate/form" element={<NewExperienceCertificate />} />
-        <Route path="/view-experience-certificate" element={<ViewExperienceCertificate />} />
-        
-        {/* Offer Letter */}
-        <Route path="/offer-letter/form" element={<NewOfferLetterForm />} />
-        <Route path="/offer-letter/preview" element={<OfferLetterPreview />} />
-        
-        {/* Relieving Letter */}
-        <Route path="/relieving-letter/form" element={<NewRelievingLetterForm />} />
-        <Route path="/relieving-letter/preview" element={<RelievingLetterPreview />} />
-        
-        {/* Redirects for backward compatibility */}
-        <Route path="/new-experience-certificate" element={<Navigate to="/experience-certificate/form" replace />} />
-        <Route path="/offer-letter" element={<Navigate to="/offer-letter/form" replace />} />
-        <Route path="/relieving-letter" element={<Navigate to="/relieving-letter/form" replace />} />
-      </Routes>
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
     </Router>
   );
 }

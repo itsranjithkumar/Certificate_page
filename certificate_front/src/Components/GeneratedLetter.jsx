@@ -1,36 +1,41 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import html2pdf from 'html2pdf.js';
 
 const GeneratedLetter = () => {
   const location = useLocation();
   const { letterText } = location.state || {}; // Extract letterText from location state
 
-  const downloadLetter = () => {
+  const downloadLetter = async () => {
     const letterContent = document.getElementById("letter-content");
+    if (!letterContent) return;
 
     // Temporarily remove shadow before downloading PDF
     letterContent.classList.remove('shadow-lg');
 
-    // Set options for html2pdf
-    const opt = {
-      margin: 0, // Remove margin to maximize space for content
-      filename: 'internship_letter.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 1.5, useCORS: true }, // Slightly lower scale for better fit
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-      pagebreak: { mode: ['avoid-all', 'css'] }, // Avoid page breaks within elements
-    };
+    try {
+      const html2pdf = (await import('html2pdf.js')).default;
+      
+      // Set options for html2pdf
+      const opt = {
+        margin: 0, // Remove margin to maximize space for content
+        filename: 'internship_letter.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 1.5, useCORS: true }, // Slightly lower scale for better fit
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+        pagebreak: { mode: ['avoid-all', 'css'] }, // Avoid page breaks within elements
+      };
 
-    // Generate and download PDF
-    html2pdf()
-      .from(letterContent)
-      .set(opt)
-      .save()
-      .then(() => {
-        // Re-add shadow after the PDF download is done
-        letterContent.classList.add('shadow-lg');
-      });
+      // Generate and download PDF
+      await html2pdf()
+        .from(letterContent)
+        .set(opt)
+        .save();
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    } finally {
+      // Always re-add shadow regardless of success/failure
+      letterContent.classList.add('shadow-lg');
+    }
   };
 
   return (

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 import DocumentCard from './document-card';
 import FeaturesSection from './features-section';
 
@@ -31,8 +33,24 @@ const documentTypes = [
 ];
 
 const HomePage = () => {
+  const { user, logout } = useAuth();
   return (
     <div className="min-h-screen bg-background">
+      {/* Header with Logout Button */}
+      <header className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <h1 className="text-xl font-semibold text-gray-900">Document Generator</h1>
+          {user ? (
+            <Button onClick={logout} variant="outline">
+              Logout
+            </Button>
+          ) : (
+            <Button asChild variant="outline">
+              <Link to="/login">Admin Login</Link>
+            </Button>
+          )}
+        </div>
+      </header>
       {/* Hero Section */}
       <section className="relative border-b border-border bg-gradient-to-br from-background via-background to-secondary/10 px-4 py-28 sm:px-6 sm:py-40 lg:px-8">
         <div className="mx-auto max-w-5xl text-center">

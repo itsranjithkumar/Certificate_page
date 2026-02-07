@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import html2pdf from 'html2pdf.js';
 
 interface CertificateData {
   employeeName?: string;
@@ -66,19 +65,28 @@ const ViewExperienceCertificate = () => {
     }
   }, [location.state, navigate]);
 
-  const handleDownload = () => {
+  const downloadPdf = async () => {
+    if (!certificateRef.current) return;
+
     const element = certificateRef.current;
-    if (!element) return;
-    
     const opt = {
       margin: 10,
-      filename: `Experience_Certificate_${state.employeeName || 'employee'}.pdf`,
+      filename: `${employeeName}-Experience-Certificate.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true },
+      html2canvas: { scale: 2 },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
-    
-    html2pdf().set(opt).from(element).save();
+
+    try {
+      const html2pdf = (await import('html2pdf.js')).default;
+      // Generate PDF
+      await html2pdf()
+        .set(opt)
+        .from(element)
+        .save();
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    }
   };
   
   const formatDate = (dateString?: string) => {
@@ -205,7 +213,7 @@ const ViewExperienceCertificate = () => {
         {/* Action Button */}
         <div className="mt-12 flex justify-center">
           <button
-            onClick={handleDownload}
+            onClick={downloadPdf}
             className="px-8 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 flex items-center font-light shadow-lg hover:shadow-xl"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
