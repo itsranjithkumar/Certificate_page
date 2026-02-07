@@ -61,78 +61,27 @@ export function RelievingLetterPreview() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12">
-      {/* Toolbar */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-300 shadow-sm print:hidden">
-        <div className="max-w-4xl mx-auto px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => navigate('/')}
-              className="p-2 hover:bg-gray-100 rounded transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5 text-gray-600" />
-            </button>
-            <h1 className="text-lg font-semibold text-gray-900">
-              Relieving Letter Preview
-            </h1>
-          </div>
-          <div className="flex gap-3">
-            <Button
-              onClick={handleDownload}
-              className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
-            >
-              <Download className="w-4 h-4" />
-              Download PDF
-            </Button>
-            <Button
-              onClick={handlePrint}
-              className="bg-gray-700 hover:bg-gray-800 text-white flex items-center gap-2"
-            >
-              <FileText className="w-4 h-4" />
-              Print
-            </Button>
-            <Button
-              onClick={() => navigate('/')}
-              variant="outline"
-              className="flex items-center gap-2"
-            >
-              <Edit2 className="w-4 h-4" />
-              Edit
-            </Button>
-            <Button
-              onClick={() => {
-                navigate('/new-experience-certificate', { 
-                  state: { 
-                    employeeName: data.employeeName,
-                    employeeId: data.employeeId,
-                    designation: data.designation,
-                    department: data.department,
-                    startDate: data.startDate,
-                    endDate: data.endDate,
-                    companyName: data.companyName,
-                    companyAddress: data.companyAddress
-                  } 
-                });
-              }}
-              variant="outline"
-              className="flex items-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-100 border-blue-200"
-            >
-              <FileText className="w-4 h-4" />
-              View Experience Certificate
-            </Button>
-          </div>
-        </div>
+    <div className="min-h-screen bg-gray-50">
+      <div className="fixed top-4 right-4 z-10">
+        <Button
+          onClick={handleDownload}
+          className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2 shadow-lg"
+        >
+          <Download className="h-4 w-4" />
+          Download Letter
+        </Button>
       </div>
 
       {/* Document Container */}
-      <div className="max-w-4xl mx-auto px-6 pt-12">
+      <div className="max-w-4xl mx-auto px-6 pt-16">
         <div
           ref={printRef}
-          className="bg-white p-20 border-2 border-black shadow-lg"
+          className="bg-white p-12 border-2 border-black shadow-lg"
           style={{
             fontFamily: '"Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif',
             lineHeight: '1.8',
             color: '#1a1a1a',
+            marginTop: '2rem',
           }}
         >
           {/* Company Header with Logo */}
