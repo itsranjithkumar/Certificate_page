@@ -160,7 +160,8 @@ export default function DocumentGenerator() {
       <div class="signature-section">
         <div class="signature">
           <img 
-            src="/sig.png" 
+            src="/sig.png"
+            onError="this.style.display='none'"
             alt="Signature" 
             style="width: 180px; height: auto; margin-left: -35px; margin-bottom: -40px;" 
           />
@@ -170,7 +171,8 @@ export default function DocumentGenerator() {
         
         <div class="center-logo">
           <img 
-            src="/Magizh Technologies.png" 
+            src="/Magizh Technologies.png"
+            onError="this.style.display='none'"
             alt="Magizh Technologies Logo" 
             className="w-36 h-36" 
             style={{
@@ -182,7 +184,8 @@ export default function DocumentGenerator() {
         
         <div class="logo-container">
           <img 
-            src="/msme.png" 
+            src="/msme.png"
+            onError="this.style.display='none'"
             alt="MSME Logo" 
             className="w-36 h-36" 
             style={{
@@ -209,7 +212,8 @@ export default function DocumentGenerator() {
     </div>
     <div class="qr-code">
       <img 
-        src="https://magizh-certification-app.onrender.com/generate_qr?id=jgfhgfj" 
+        src="https://magizh-certification-app.onrender.com/generate_qr?id=jgfhgfj"
+        onError="this.style.display='none'" 
         alt="QR Code" 
         onError="this.style.display='none'" 
         onLoad="console.log('QR Code loaded successfully')" 

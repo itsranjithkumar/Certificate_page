@@ -43,6 +43,7 @@ const GeneratedCertificate = () => {
         >
           <img
             src="/logo.png"
+            onError={(e) => { e.target.style.display = 'none'; }}
             alt="Watermark Logo"
             className="w-[300px] h-[300px]"
           />
@@ -54,6 +55,7 @@ const GeneratedCertificate = () => {
           <div className="flex flex-col items-center mb-2">
             <img
               src="/logo.png"
+            onError={(e) => { e.target.style.display = 'none'; }}
               alt="Organization Logo"
               className="w-20 h-30 mb-8"
               style={{ filter: 'drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5))' }}
@@ -138,6 +140,7 @@ const GeneratedCertificate = () => {
             <div className="flex flex-col items-center text-center">
               <img
                 src="/Magizh Technologies.png"
+                onError={(e) => { e.target.style.display = 'none'; }}
                 alt="Seal Logo"
                 className="w-36 h-36"
                 style={{
@@ -147,6 +150,7 @@ const GeneratedCertificate = () => {
 
               <img
                 src="https://magizh-certification-app.onrender.com/generate_qr?id=jgfhgfj"
+                onError={(e) => { e.target.style.display = 'none'; }}
                 alt="QR Code"
                 className="w-36 h-36"
                 style={{
@@ -162,6 +166,7 @@ const GeneratedCertificate = () => {
             <div className="relative text-center" style={{ marginRight: '0px', textAlign: 'right', marginTop: '-40px' }}>
               <img
                 src="/sig.png"
+                onError={(e) => { e.target.style.display = 'none'; }}
                 alt="Signature"
                 className="w-[170px] h-auto mb-2"
                 style={{

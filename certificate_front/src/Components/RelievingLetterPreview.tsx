@@ -88,7 +88,7 @@ export function RelievingLetterPreview() {
           <div className="mb-12 pb-8 border-b-2 border-black text-center">
             <div className="flex flex-col items-center">
               <img 
-                src="/logo.png" 
+                src="/logo.png"
                 alt="Company Logo" 
                 className="h-20 w-auto mb-4"
                 onError={(e) => {

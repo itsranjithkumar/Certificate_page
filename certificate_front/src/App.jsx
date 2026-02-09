@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth, ProtectedRoute } from './contexts/AuthContext';
-import HomePage from './Components/HomePage';
+import { HomePage } from './Components/HomePage';
 import CertificatePage from './Components/CertificatePage.jsx';
 import GeneratedCertificate from './Components/GeneratedCertificate.jsx';
 import DocumentGenerator from './Components/documentgenerator.jsx';
@@ -13,6 +13,7 @@ import NewOfferLetterForm from './Components/NewOfferLetterForm';
 import { RelievingLetterPreview } from './Components/RelievingLetterPreview';
 import { NewRelievingLetterForm } from './Components/NewRelievingLetterForm';
 import LoginPage from './Components/LoginPage';
+import ReceiptForm from './Components/ReceiptForm';
 import './App.css';
 import './index.css';
 
@@ -87,6 +88,13 @@ const AppRoutes = () => {
       <Route path="/relieving-letter/preview" element={
         <ProtectedRoute>
           <RelievingLetterPreview />
+        </ProtectedRoute>
+      } />
+      
+      {/* Receipt Generator */}
+      <Route path="/receipt" element={
+        <ProtectedRoute>
+          <ReceiptForm />
         </ProtectedRoute>
       } />
       

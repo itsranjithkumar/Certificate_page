@@ -58,6 +58,7 @@ const GeneratedLetter = () => {
           src="/logo.png"
           alt="Watermark Logo"
           className="absolute inset-0 m-auto w-[300px] h-[300px] opacity-30 filter brightness-1300 pointer-events-none"
+          onError={(e) => { e.target.style.display = 'none'; }}
           style={{
             left: '50%', // Move slightly to the right
             top: '20%', // Move slightly down
@@ -80,6 +81,7 @@ const GeneratedLetter = () => {
               alt="Logo"
               className="mx-auto mb-2"
               style={{ width: '100px', height: '110px' }}
+              onError={(e) => { e.target.style.display = 'none'; }}
             />
             <h1
               className="text-2xl font-bold text-gray-800"
