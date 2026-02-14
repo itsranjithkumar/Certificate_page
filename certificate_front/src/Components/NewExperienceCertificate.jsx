@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ChevronLeft, FileText, User, Calendar, Briefcase, Building2 } from 'lucide-react';
 
 const NewExperienceCertificate = () => {
   const navigate = useNavigate();
@@ -42,6 +43,36 @@ const NewExperienceCertificate = () => {
   });
   
   const [errors, setErrors] = useState({});
+
+  const loadSampleData = () => {
+    setFormData({
+      employeeName: 'John Doe',
+      employeeId: 'EMP12345',
+      designation: 'Senior Software Engineer',
+      department: 'Engineering',
+      employmentType: 'Full-time',
+      startDate: '2022-01-15',
+      endDate: '2024-02-15',
+      isCurrentlyWorking: false,
+      companyName: 'Magizh Technologies',
+      companyAddress: '123 Tech Park, Chennai, India',
+      companyPhone: '+91-9876543210',
+      companyEmail: 'hr@magizhtech.com',
+      companyWebsite: 'www.magizhtech.com',
+      jobDescription: 'Developing and maintaining software applications, collaborating with team members',
+      keyAchievements: [
+        'Successfully delivered multiple projects on time and within budget',
+        'Implemented key features that improved system performance by 30%',
+        'Mentored junior developers and conducted code reviews'
+      ].join('\n'),
+      issueDate: new Date().toISOString().split('T')[0],
+      certificateId: `EXP-${Math.random().toString(36).substr(2, 9).toUpperCase()}`,
+      signatoryName: 'Jane Smith',
+      signatoryDesignation: 'Head of Engineering',
+      signatoryEmail: 'jane.smith@magizhtech.com',
+      signatoryPhone: '+91-9876543211'
+    });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,79 +118,91 @@ const NewExperienceCertificate = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Experience Certificate Generator</h1>
-          <p className="text-gray-600">Fill in the employee details to generate a professional experience certificate</p>
+    <div className="min-h-screen bg-white">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-8 sm:pt-16 pb-16 sm:pb-24">
+        <button 
+          onClick={() => window.history.back()}
+          className="text-gray-600 hover:text-gray-900 mb-12 transition-colors"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <div className="max-w-2xl">
+          <h1 className="text-5xl sm:text-6xl font-light tracking-tight text-gray-900 mb-4">
+            Experience Certificate
+          </h1>
+          <p className="text-lg text-gray-600 font-light leading-relaxed">
+            Generate professional experience certificates for your employees with detailed information about their roles and achievements.
+          </p>
         </div>
+      </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
-          {/* Employee Details Section */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 border-b pb-2 mb-4">Employee Information</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Full Name *</label>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 pb-24">
+        <form onSubmit={handleSubmit} className="space-y-16">
+          {/* Employee Details */}
+          <div>
+            <h2 className="text-2xl font-light text-gray-900 mb-12">Employee Information</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Full Name</label>
                 <input
                   type="text"
                   name="employeeName"
                   value={formData.employeeName}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border ${errors.employeeName ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="John Doe"
                 />
                 {errors.employeeName && (
-                  <p className="text-sm text-red-600">{errors.employeeName}</p>
+                  <p className="text-sm text-red-600 mt-2">{errors.employeeName}</p>
                 )}
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Employee ID</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Employee ID</label>
                 <input
                   type="text"
                   name="employeeId"
                   value={formData.employeeId}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="EMP-123"
                 />
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Designation *</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Designation</label>
                 <input
                   type="text"
                   name="designation"
                   value={formData.designation}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border ${errors.designation ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="Software Engineer"
                 />
                 {errors.designation && (
-                  <p className="text-sm text-red-600">{errors.designation}</p>
+                  <p className="text-sm text-red-600 mt-2">{errors.designation}</p>
                 )}
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Department</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Department</label>
                 <input
                   type="text"
                   name="department"
                   value={formData.department}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="Engineering"
                 />
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Employment Type</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Employment Type</label>
                 <select
                   name="employmentType"
                   value={formData.employmentType}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                 >
                   <option value="Full-time">Full-time</option>
                   <option value="Part-time">Part-time</option>
@@ -170,30 +213,30 @@ const NewExperienceCertificate = () => {
             </div>
           </div>
           
-          {/* Employment Period Section */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 border-b pb-2 mb-4">Employment Period</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Start Date *</label>
+          {/* Employment Period */}
+          <div>
+            <h2 className="text-2xl font-light text-gray-900 mb-12">Employment Period</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Start Date</label>
                 <input
                   type="date"
                   name="startDate"
                   value={formData.startDate}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border ${errors.startDate ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                 />
                 {errors.startDate && (
-                  <p className="text-sm text-red-600">{errors.startDate}</p>
+                  <p className="text-sm text-red-600 mt-2">{errors.startDate}</p>
                 )}
               </div>
               
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <label className="block text-sm font-medium text-gray-700">
-                    {formData.isCurrentlyWorking ? 'End Date' : 'End Date *'}
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <label className="block text-sm text-gray-600">
+                    {formData.isCurrentlyWorking ? 'End Date' : 'End Date'}
                   </label>
-                  <div className="flex items-center">
+                  <div className="flex items-center gap-2">
                     <input
                       type="checkbox"
                       id="isCurrentlyWorking"
@@ -203,9 +246,9 @@ const NewExperienceCertificate = () => {
                         isCurrentlyWorking: e.target.checked,
                         endDate: e.target.checked ? '' : prev.endDate
                       }))}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      className="h-4 w-4 accent-gray-900"
                     />
-                    <label htmlFor="isCurrentlyWorking" className="ml-2 block text-sm text-gray-700">
+                    <label htmlFor="isCurrentlyWorking" className="text-sm text-gray-600 cursor-pointer">
                       Currently Working
                     </label>
                   </div>
@@ -216,123 +259,120 @@ const NewExperienceCertificate = () => {
                   value={formData.endDate}
                   onChange={handleChange}
                   disabled={formData.isCurrentlyWorking}
-                  className={`w-full px-4 py-2 border ${
-                    errors.endDate ? 'border-red-500' : 'border-gray-300'
-                  } rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
-                    formData.isCurrentlyWorking ? 'bg-gray-100' : ''
+                  className={`w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent ${
+                    formData.isCurrentlyWorking ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 />
                 {errors.endDate && (
-                  <p className="text-sm text-red-600">{errors.endDate}</p>
+                  <p className="text-sm text-red-600 mt-2">{errors.endDate}</p>
                 )}
               </div>
             </div>
           </div>
           
-          {/* Company Details Section */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 border-b pb-2 mb-4">Company Details</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Company Name *</label>
+          {/* Company Details */}
+          <div>
+            <h2 className="text-2xl font-light text-gray-900 mb-12">Company Details</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Company Name</label>
                 <input
                   type="text"
                   name="companyName"
                   value={formData.companyName}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border ${errors.companyName ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="Magizh Technologies"
                 />
                 {errors.companyName && (
-                  <p className="text-sm text-red-600">{errors.companyName}</p>
+                  <p className="text-sm text-red-600 mt-2">{errors.companyName}</p>
                 )}
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Company Address</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Company Address</label>
                 <input
                   type="text"
                   name="companyAddress"
                   value={formData.companyAddress}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="123 Tech Park, Chennai, India"
                 />
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Phone</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Phone</label>
                 <input
                   type="tel"
                   name="companyPhone"
                   value={formData.companyPhone}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="+91-XXXXXXXXXX"
                 />
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Email</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Email</label>
                 <input
                   type="email"
                   name="companyEmail"
                   value={formData.companyEmail}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="hr@magizhtech.com"
                 />
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Website</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Website</label>
                 <input
                   type="url"
                   name="companyWebsite"
                   value={formData.companyWebsite}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="www.magizhtech.com"
                 />
               </div>
             </div>
           </div>
           
-          {/* Job Description & Achievements */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 border-b pb-2 mb-4">Role & Responsibilities</h2>
+          {/* Role & Responsibilities */}
+          <div>
+            <h2 className="text-2xl font-light text-gray-900 mb-12">Role & Responsibilities</h2>
             
-            <div className="space-y-2 mb-6">
-              <label className="block text-sm font-medium text-gray-700">Job Description</label>
+            <div className="mb-12">
+              <label className="block text-sm text-gray-600 mb-4">Job Description</label>
               <textarea
                 name="jobDescription"
                 value={formData.jobDescription}
                 onChange={handleChange}
-                rows={3}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                rows={2}
+                className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent resize-none"
                 placeholder="Describe the primary responsibilities of the employee"
               />
             </div>
             
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <label className="block text-sm font-medium text-gray-700">Key Achievements</label>
+            <div>
+              <div className="flex justify-between items-center mb-8">
+                <label className="block text-sm text-gray-600">Key Achievements</label>
                 <button
                   type="button"
                   onClick={addAchievement}
-                  className="text-sm text-blue-600 hover:text-blue-800"
+                  className="text-sm text-gray-600 hover:text-gray-900 font-light"
                 >
-                  + Add Achievement
+                  + Add
                 </button>
               </div>
               {formData.keyAchievements.split('\n').map((achievement, index) => (
-                <div key={index} className="flex items-center space-x-2">
-                  <span className="text-gray-500">•</span>
+                <div key={index} className="mb-8">
                   <input
                     type="text"
                     value={achievement}
                     onChange={(e) => handleKeyAchievementChange(index, e.target.value)}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                     placeholder="Enter achievement"
                   />
                 </div>
@@ -341,53 +381,53 @@ const NewExperienceCertificate = () => {
           </div>
           
           {/* Signatory Details */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 border-b pb-2 mb-4">Authorized Signatory</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Name</label>
+          <div>
+            <h2 className="text-2xl font-light text-gray-900 mb-12">Authorized Signatory</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Name</label>
                 <input
                   type="text"
                   name="signatoryName"
                   value={formData.signatoryName}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="John Doe"
                 />
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Designation</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Designation</label>
                 <input
                   type="text"
                   name="signatoryDesignation"
                   value={formData.signatoryDesignation}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="Head of Engineering"
                 />
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Email</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Email</label>
                 <input
                   type="email"
                   name="signatoryEmail"
                   value={formData.signatoryEmail}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="john.doe@magizhtech.com"
                 />
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Phone</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Phone</label>
                 <input
                   type="tel"
                   name="signatoryPhone"
                   value={formData.signatoryPhone}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                   placeholder="+91-XXXXXXXXXX"
                 />
               </div>
@@ -395,18 +435,18 @@ const NewExperienceCertificate = () => {
           </div>
           
           {/* Certificate Details */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 border-b pb-2 mb-4">Certificate Details</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Certificate ID</label>
-                <div className="flex">
+          <div>
+            <h2 className="text-2xl font-light text-gray-900 mb-12">Certificate Details</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Certificate ID</label>
+                <div className="flex gap-4 items-end">
                   <input
                     type="text"
                     name="certificateId"
                     value={formData.certificateId}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-l-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="flex-1 text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                     readOnly
                   />
                   <button
@@ -415,7 +455,7 @@ const NewExperienceCertificate = () => {
                       ...prev,
                       certificateId: `EXP-${Math.random().toString(36).substr(2, 9).toUpperCase()}`
                     }))}
-                    className="px-3 py-2 bg-gray-100 border border-l-0 border-gray-300 rounded-r-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="text-sm text-gray-600 hover:text-gray-900 font-light pb-3 whitespace-nowrap"
                     title="Generate new ID"
                   >
                     🔄
@@ -423,72 +463,46 @@ const NewExperienceCertificate = () => {
                 </div>
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Issue Date</label>
+              <div>
+                <label className="block text-sm text-gray-600 mb-4">Issue Date</label>
                 <input
                   type="date"
                   name="issueDate"
                   value={formData.issueDate}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full text-base text-gray-900 border-b border-gray-300 pb-3 focus:border-gray-900 outline-none transition-colors bg-transparent"
                 />
               </div>
             </div>
           </div>
           
-          <div className="mt-8 flex flex-col sm:flex-row justify-end space-y-4 sm:space-y-0 sm:space-x-4">
+          <div className="flex flex-col sm:flex-row gap-6 pt-8">
             <button
               type="button"
-              onClick={() => window.history.back()}
-              className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+              onClick={loadSampleData}
+              className="px-8 py-3 text-gray-900 font-light hover:bg-gray-100 rounded transition-colors"
             >
-              Cancel
+              Load Sample
             </button>
-            <button
-              type="button"
-              onClick={() => {
-                // Fill with sample data for testing
-                setFormData({
-                  employeeName: 'John Doe',
-                  employeeId: 'EMP-2024-001',
-                  designation: 'Senior Software Engineer',
-                  department: 'Engineering',
-                  employmentType: 'Full-time',
-                  startDate: '2022-01-15',
-                  endDate: '2024-01-15',
-                  isCurrentlyWorking: false,
-                  companyName: 'Magizh Technologies',
-                  companyAddress: '123 Tech Park, Chennai, India',
-                  companyPhone: '+91-9876543210',
-                  companyEmail: 'hr@magizhtech.com',
-                  companyWebsite: 'www.magizhtech.com',
-                  jobDescription: 'Developed and maintained web applications using modern JavaScript frameworks and cloud technologies.',
-                  keyAchievements: 'Successfully led a team of 5 developers\nImproved application performance by 40%\nImplemented CI/CD pipeline reducing deployment time by 60%',
-                  issueDate: new Date().toISOString().split('T')[0],
-                  certificateId: `EXP-${Math.random().toString(36).substr(2, 9).toUpperCase()}`,
-                  signatoryName: 'Sarah Johnson',
-                  signatoryDesignation: 'Head of Engineering',
-                  signatoryEmail: 'sarah.j@magizhtech.com',
-                  signatoryPhone: '+91-9876543211'
-                });
-              }}
-              className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors duration-200"
-            >
-              Fill Sample Data
-            </button>
-            <button
-              type="submit"
-              className="px-6 py-2 border border-transparent rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200 flex items-center justify-center"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clipRule="evenodd" />
-              </svg>
-              Generate Certificate
-            </button>
+            <div className="flex flex-col sm:flex-row gap-6">
+              <button
+                type="button"
+                onClick={() => window.history.back()}
+                className="px-8 py-3 text-gray-900 font-light hover:bg-gray-100 rounded transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="px-8 py-3 bg-gray-900 text-white font-light rounded hover:bg-gray-800 transition-colors"
+              >
+                Generate Certificate
+              </button>
+            </div>
           </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
   );
 };
 

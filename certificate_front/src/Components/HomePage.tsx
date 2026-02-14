@@ -77,10 +77,10 @@ export function HomePage() {
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">D</span>
+            <div className="w-10 h-10 flex items-center justify-center">
+              <img src="/logo.png" alt="Magizh Technologies Logo" className="w-full h-full object-contain" />
             </div>
-            <span className="text-lg font-semibold text-gray-900">Document Pro</span>
+            <span className="text-lg font-semibold text-gray-900">Magizh Technologies</span>
           </div>
           <Button
             className="rounded-full px-6 bg-gray-900 hover:bg-gray-800 text-white font-medium transition-all duration-300"
